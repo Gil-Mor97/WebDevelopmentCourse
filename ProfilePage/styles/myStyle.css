@@ -1,0 +1,237 @@
+body {
+    direction: rtl;
+    
+}
+
+#container {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    width: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-image: url(../images/CAT_BG.png);
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position: left bottom;
+}
+
+header {
+    color: mediumslateblue;
+    /*color: mediumblue;*/
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Gveret Levin AlefAlefAlef', 'Guttman Yad-Brush';
+}
+
+h1 {
+    font-family: 'Gveret Levin AlefAlefAlef', 'Guttman Yad-Brush';
+    color: lightseagreen;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 35px;
+}
+
+h2 {
+    font-family: 'Gveret Levin AlefAlefAlef', 'Guttman Yad-Brush';
+    color: royalblue;
+    font-size: 25px;
+    margin-bottom: 8px;
+    margin-top: 6px;
+}
+
+section {
+    padding: 7px;
+    margin-right: 15px;
+}
+
+
+table {
+    margin-right: 5px;
+}
+
+td {
+    padding: 3px;
+}
+
+.ans, p {
+    color: mediumslateblue;
+    font-family: 'Dana Yad AlefAlefAlef', 'Guttman Yad';
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+section, span, li, ul {
+    font-family: 'Dana Yad AlefAlefAlef', 'Guttman Yad';
+    font-size: 25px;
+}
+
+li {
+    margin-right: 25px;
+}
+
+img {
+    width: 35px;
+    height: 35px;
+}
+
+ul {
+    list-style: square;
+}
+
+.eng, span {
+    font-family: Pristina;
+    font-size: 25px;
+}
+
+#mmo {
+    background-image: none;
+    background-color: white;
+    width: 10px;
+}
+
+    #mmo:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/TERA.jpg);
+        background-repeat: no-repeat;
+    }
+
+#jrpg {
+    background-image: none;
+    background-color: white;
+    width: 10px;
+}
+
+    #jrpg:hover {
+        color: transparent;
+        width: 500px;
+        height: 280px;
+        background-image: url(../images/BERSERIA.jpg);
+        background-repeat: no-repeat;
+    }
+
+#rts {
+    background-image: none;
+    background-color: white;
+    width: 10px;
+}
+
+    #rts:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/CNC.jpg);
+        background-repeat: no-repeat;
+    }
+#cats {
+    background-image: none;
+    background-color: white;
+    width: 10px;
+    text-decoration: underline;
+}
+
+    #cats:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/CATS.jpg);
+        background-repeat: no-repeat;
+        background-size: 500px;
+        margin-bottom: 10px;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+        font-size: 0px;
+    }
+
+#prog {
+    background-image: none;
+    background-color: white;
+    width: 200px;
+    text-decoration: underline;
+}
+
+    #prog:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/PROG.jpg);
+        background-repeat: no-repeat;
+    }
+
+#prog {
+    background-image: none;
+    background-color: white;
+    width: 200px;
+    text-decoration: underline;
+}
+
+    #prog:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/PROG.jpg);
+        background-repeat: no-repeat;
+    }
+#pop {
+    background-image: none;
+    background-color: white;
+    width: 200px;
+    text-decoration: underline;
+}
+
+    #pop:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/POP.jpg);
+        background-repeat: no-repeat;
+    }
+
+#alt {
+    background-image: none;
+    background-color: white;
+    width: 200px;
+    text-decoration: underline;
+}
+
+    #alt:hover {
+        color: transparent;
+        width: 500px;
+        height: 300px;
+        background-image: url(../images/ALT.jpg);
+        background-repeat: no-repeat;
+    }
+.sublist {
+    list-style-type: circle;
+    color: lightseagreen;
+    text-decoration: underline;
+}
+
+.subitem {
+    font-size: 20px;
+    font-family: Pristina;
+}
+.subitem:hover {
+    color: transparent;
+    width: 500px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: 500px;
+    margin-bottom: 10px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    font-size: 0px;
+}
