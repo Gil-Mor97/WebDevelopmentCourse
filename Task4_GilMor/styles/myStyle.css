@@ -32,15 +32,15 @@ body {
 
 #nav1 ul {
     list-style: none;
-    width: 400px;
+    width: 440px;
     margin: 0 auto;
     padding: 0;
     overflow: hidden;
 }
 
     #nav1 ul li {
-        display: inline-block;
-        width: 16%;
+        display: grid;
+        width: 15%;
         float: right;
     }
 
@@ -50,7 +50,7 @@ body {
             color: white;
             text-decoration: none;
             text-align: center;
-            width: 120px;
+            width: 100px;
             height: 30px;
             Padding-top: 10px;
         }
@@ -69,6 +69,7 @@ h1 {
     margin-bottom: 15px;
     margin-top: 15px;
     font-size: 35px;
+    margin-right: 10px;
 }
 
 
@@ -82,7 +83,7 @@ h2 {
 
 section {
     padding: 7px;
-    margin-right: 15px;
+    margin-right: 25px;
     margin-left: 15px;
     margin-bottom: 20px;
 }
@@ -172,6 +173,7 @@ ul {
         background-image: url(../images/CNC.jpg);
         background-repeat: no-repeat;
     }
+
 #cats {
     background-image: none;
     background-color: white;
@@ -210,6 +212,7 @@ ul {
         background-image: url(../images/PROG.jpg);
         background-repeat: no-repeat;
     }
+
 #pop {
     background-image: none;
     background-color: white;
@@ -241,6 +244,7 @@ ul {
         background-image: url(../images/ALT.jpg);
         background-repeat: no-repeat;
     }
+
 .sublist {
     list-style-type: circle;
     color: lightseagreen;
@@ -251,6 +255,7 @@ ul {
     font-size: 20px;
     font-family: Pristina;
 }
+
     .subitem:hover {
         color: transparent;
         width: 250px;
