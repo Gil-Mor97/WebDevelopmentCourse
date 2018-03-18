@@ -3,7 +3,7 @@ body {
 }
 
 #container {
-    position: absolute;
+    position: relative;
     top: 25px;
     left: 50%;
     width: auto;
@@ -104,8 +104,8 @@ td {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 25px;
-    margin-right: 45px;
+    margin-left: 75px;
+    margin-right: 25px;
 }
 
 section, span, li, ul {
