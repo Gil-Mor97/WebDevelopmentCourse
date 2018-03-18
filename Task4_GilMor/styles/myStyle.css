@@ -79,6 +79,7 @@ h2 {
     font-size: 25px;
     margin-bottom: 8px;
     margin-top: 6px;
+    margin-right: 10px;
 }
 
 section {
@@ -90,7 +91,7 @@ section {
 
 
 table {
-    margin-right: 5px;
+    margin-right: 15px;
 }
 
 td {
@@ -103,7 +104,8 @@ td {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 150px;
+    margin-left: 75px;
+    margin-right: 25px;
 }
 
 section, span, li, ul {
