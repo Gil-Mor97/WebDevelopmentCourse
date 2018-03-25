@@ -14,7 +14,7 @@
 <title>Animation Project</title>
 <!-- write your code here -->
 <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-<script src="Animation Project.js?1521848589808"></script>
+<script src="Animation Project.js?1521937782742"></script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 function init() {
@@ -25,9 +25,14 @@ function init() {
 	var lib=comp.getLibrary();
 	var loader = new createjs.LoadQueue(false);
 	loader.installPlugin(createjs.Sound);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
 	var lib=comp.getLibrary();
 	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
 }
 function handleComplete(evt,comp) {
 	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
@@ -44,7 +49,32 @@ function handleComplete(evt,comp) {
 	fnStartAnimation = function() {
 		stage.addChild(exportRoot);
 		createjs.Ticker.setFPS(lib.properties.fps);
-		createjs.Ticker.addEventListener("tick", stage);
+		createjs.Ticker.addEventListener("tick", stage)
+		stage.addEventListener("tick", handleTick)
+		function handleTick(event) {
+			var cameraInstance = exportRoot.___camera___instance;
+			if(cameraInstance)
+			{
+				var stageCenter = { 'x' : lib.properties.width/2, 'y' : lib.properties.height/2 };
+				if(cameraInstance._off != null && cameraInstance._off == true)
+					exportRoot.transformMatrix = new createjs.Matrix2D();
+				else
+				{
+					if(cameraInstance.pinToObject !== undefined)
+					{
+						cameraInstance.x = cameraInstance.pinToObject.x + cameraInstance.pinToObject.pinOffsetX;
+						cameraInstance.y = cameraInstance.pinToObject.y + cameraInstance.pinToObject.pinOffsetY;
+					}
+					var mat = cameraInstance.getMatrix();
+					mat.tx -= stageCenter.x;
+					mat.ty -= stageCenter.y;
+					var inverseMat = mat.invert();
+					inverseMat.prependTransform(stageCenter.x, stageCenter.y, 1, 1, 0, 0, 0, 0, 0);
+					inverseMat.appendTransform(-stageCenter.x, -stageCenter.y, 1, 1, 0, 0, 0, 0, 0);
+					exportRoot.transformMatrix = inverseMat;
+				}
+			}
+		}
 	}	    
 	//Code to support hidpi screens and responsive scaling.
 	function makeResponsive(isResp, respDim, isScale, scaleType) {		
