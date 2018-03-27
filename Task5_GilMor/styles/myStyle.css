@@ -1,4 +1,4 @@
-﻿body {
+body {
     direction: rtl;
     margin: 0;
     padding: 0;
@@ -195,7 +195,8 @@ h1, h2, h3, h4, h5 {
 }
 
     .externalLinks a {
-        font-family: Calibri;
+        font-size: 0;
+        padding: 1%;
     }
 
 .more_info th {
@@ -219,11 +220,11 @@ h1, h2, h3, h4, h5 {
 }
 
 .exticons {
-    width: 5%;
+    width: 7.5%;
 }
 
 #yt {
-    width: 7%;
+    width: 10.5%;
 }
 
 #facultyLink {
