@@ -154,12 +154,6 @@ li {
     margin-right: 25px;
 }
 
-#finalVisualDesign {
-    height: 50%;
-    width: 25%;
-    display: inline-block;
-}
-
 ul {
     list-style: square;
 }
@@ -168,21 +162,58 @@ ul {
     display: inline-flex;
     padding: 1%;
     width: 80%;
-    margin-right: 5%;
+    margin-right: 3%;
     margin-top: 2%;
-    margin-left: 23%;
+    margin-left: 0%;
 }
 
-.actDesc {
+#finalVisualDesign {
+    height: 50%;
+    width: 25%;
     display: inline-block;
-    width: 45%;
-    margin-right: 5%;
+}
+
+    #finalVisualDesign:hover {
+        -moz-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+        margin: 8%;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+.actDesc {
+    display: inline-flex;
+    padding: 1%;
+    width: 60%;
+    margin-right: 3%;
+    margin-top: 2%;
 }
 
 #shivimAct {
-    width: 300px;
+    height: 50%;
+    width: 40%;
     display: inline-block;
 }
+
+    #shivimAct:hover {
+        -moz-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+        margin: 10%;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
 
 #splash {
     width: 90%;
@@ -194,4 +225,14 @@ ul {
 #welcomePic {
     width: 20%;
     background-size: 10%;
+}
+
+.fullSize {
+    margin-top: 2%;
+    display: contents;
+}
+
+#audio1 {
+    margin-right: 3%;
+    margin-top: 2%;
 }
