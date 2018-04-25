@@ -1,0 +1,197 @@
+@font-face {
+    font-family: 'DanaYadAAA';
+    src: url('../Fonts/DanaYadAlefAlefAlef-Normal.eot');
+    src: url('../Fonts/DanaYadAlefAlefAlef-Normal.eot?#iefix') format('embedded-opentype'), url('../Fonts/DanaYadAlefAlefAlef-Normal.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'GveretLevinAAA';
+    src: url('../Fonts/GveretLevinAlefAlefAlef-Regular.eot');
+    src: url('../Fonts/GveretLevinAlefAlefAlef-Regular.eot?#iefix') format('embedded-opentype'), url('../Fonts/GveretLevinAlefAlefAlef-Regular.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Alef|Secular+One|Suez+One|Varela+Round');
+
+body {
+    direction: rtl;
+}
+
+#container {
+    position: relative;
+    top: 25px;
+    left: 50%;
+    width: auto;
+    margin-right: 50px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.header {
+    color: mediumslateblue;
+    /*color: mediumblue;*/
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Suez One', serif;
+    margin-top: 10px;
+}
+
+/*#nav1 ul {
+    list-style: none;
+    width: 40%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+    #nav1 ul li {
+        display: grid;
+        width: 15%;
+        float: right;
+    }
+
+        #nav1 ul li a {
+            display: block;
+            background-color: #2f2f33;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            width: 100px;
+            height: 30px;
+            Padding-top: 10px;
+        }
+
+            #nav1 ul li a:hover {
+                background-color: #3097D2;
+            }
+
+            #nav1 ul li a:active {
+                background-color: green;
+            }*/
+
+#nav1 ul {
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+#nav1 li {
+    float: right;
+}
+
+    #nav1 li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        #nav1 li a:hover {
+            background-color: royalblue;
+        }
+
+
+
+h1 {
+    font-family: 'Suez One', serif;
+    color: lightseagreen;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 35px;
+    margin-right: 10px;
+}
+
+
+h2 {
+    font-family: 'Suez One', serif;
+    color: royalblue;
+    font-size: 25px;
+    margin-bottom: 8px;
+    margin-top: 6px;
+    margin-right: 10px;
+}
+
+section {
+    padding: 7px;
+    margin-right: 25px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+
+table {
+    margin-right: 15px;
+}
+
+td {
+    padding: 3px;
+}
+
+p {
+    color: mediumslateblue;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 75px;
+    margin-right: 25px;
+}
+
+section, span, li, ul {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+}
+
+li {
+    margin-right: 25px;
+}
+
+#finalVisualDesign {
+    height: 50%;
+    width: 25%;
+    display: inline-block;
+}
+
+ul {
+    list-style: square;
+}
+
+.sundownRemake {
+    display: inline-flex;
+    padding: 1%;
+    width: 80%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-left: 23%;
+}
+
+.actDesc {
+    display: inline-block;
+    width: 45%;
+    margin-right: 5%;
+}
+
+#shivimAct {
+    width: 300px;
+    display: inline-block;
+}
+
+#splash {
+    width: 90%;
+    height: 300%;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+#welcomePic {
+    width: 20%;
+    background-size: 10%;
+}

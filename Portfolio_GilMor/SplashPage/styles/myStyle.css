@@ -1,0 +1,269 @@
+﻿body {
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+    font-family: 'OpenSansHebrew-Regular';
+    font-size: 18px;
+    color: #464646;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    direction: rtl;
+}
+
+#container {
+    width: auto;
+    top: 25px;
+    position: relative;
+    overflow-x: scroll;
+}
+
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    width: 100%;
+    float: left;
+}
+
+.header_list ul {
+    margin: 1%;
+    padding: 0;
+    width: 100%;
+    float: left;
+}
+
+    .header_list ul li {
+        list-style: none;
+        float: left;
+    }
+
+
+#logoimg {
+    width: 30%;
+}
+
+.header {
+    width: 100%;
+    float: left;
+    background: url(../images/main-bg.jpg) no-repeat center bottom;
+}
+
+.logo {
+    width: auto;
+    position: relative;
+    margin-right: 45%;
+}
+
+
+.header_content {
+    width: 100%;
+    height: 560px;
+    float: left;
+}
+
+    .header_content h1 {
+        font-size: 60px;
+        color: #185faa;
+        font-family: Calibri;
+    }
+
+.header_list > h2 {
+    font-size: 30px;
+    color: cornflowerblue;
+    font-family: Calibri;
+}
+
+.header_details {
+    width: 80%;
+    float: right;
+    margin-right: 100px;
+}
+
+.header_list {
+    width: 100%;
+    float: left;
+    padding: 10px 0 20px 0;
+    color: #464646;
+}
+
+    .header_list span {
+        font-family: Calibri;
+        font-weight: bold;
+        color: lightseagreen;
+    }
+
+    .header_list ul li {
+        padding: 0 2% 0 0;
+        width: 99%;
+        font-size: 22px;
+        line-height: 45px;
+        font-weight: bold;
+        list-style: none;
+    }
+
+.form_holder {
+    width: 90%;
+    float: left;
+    padding: 25px 5%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: url(../images/contact.png) no-repeat rgba(24,95,170,0.7);
+    background-size: 7%;
+    background-position: right bottom;
+}
+
+    .form_holder > h2 {
+        font-size: 30px;
+        color: darkblue;
+        font-family: Calibri;
+        margin-bottom: 2%;
+        margin-right: 5%;
+    }
+
+    .form_holder .textbox {
+        width: 100%;
+        float: left;
+    }
+
+        .form_holder .textbox td {
+            width: 49%;
+            float: left;
+            padding: 0 1% 14px 0;
+        }
+
+            .form_holder .textbox td input {
+                border: 0;
+                padding: 0 5%;
+                width: 86%;
+                text-align: right;
+                height: 37px;
+                font-family: Calibri;
+                font-size: 16px;
+                color: #666;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+            }
+
+                .form_holder .textbox td input:focus {
+                    color: #333;
+                    font-family: Calibri;
+                }
+
+    .form_holder .form_footer {
+        width: 100%;
+        float: left;
+        padding-top: 2.5%;
+    }
+
+    .form_holder .form_footer {
+        width: 231px;
+        float: left;
+    }
+
+        .form_holder .form_footer .text_holder {
+            width: 50%;
+            padding: 0 2% 0 0;
+            float: right;
+            color: #fff;
+            line-height: 35px;
+        }
+
+#send {
+    font: bold 20px Calibri;
+    color: lavender;
+    border: none;
+    float: left;
+    margin-left: 9%;
+    width: 50%;
+    background-color: rebeccapurple;
+}
+
+.more_info {
+    width: 100%;
+    float: left;
+    padding: 10px 0 20px 0;
+    color: #464646;
+    margin-top: 1%;
+}
+
+.externalLinks {
+    font: bold 20px Arial;
+    margin-top: -3%;
+    margin-bottom: 2%;
+}
+
+    .externalLinks a {
+        font-size: 0;
+        padding: 1%;
+    }
+
+.more_info th {
+    font-size: 120%;
+}
+
+.more_info {
+    margin-top: 3%;
+}
+
+    .more_info td {
+        padding: 1%;
+    }
+
+
+#students, #hightech {
+    width: 100%;
+    background-size: 10%;
+    vertical-align: middle;
+    padding-bottom: 5%;
+}
+
+.exticons {
+    width: 7.5%;
+}
+
+#yt {
+    width: 10.5%;
+}
+
+#facultyLink {
+    width: 50%;
+}
+
+#extLinks {
+    text-align: center;
+    padding-top: 2%;
+}
+
+#footer_th {
+    padding-top: 1%;
+}
+
+.jobs ul, .jobs li {
+    list-style-type: circle;
+    height: 10%;
+    padding: 2%;
+}
+
+.jobs td {
+    width: 1%;
+}
+
+.more_info h3 {
+    font-weight: 600;
+    color: cornflowerblue;
+}
+
+.more_info p {
+    padding: 1%;
+}
+
+#explaination {
+    vertical-align: top
+}
+
+#companies {
+    vertical-align: top;
+}
