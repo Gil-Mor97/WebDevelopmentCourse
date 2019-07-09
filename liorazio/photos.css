@@ -11,8 +11,8 @@ h1 {
 	font-size: 1.5em;
 	font-weight: 800;
 	text-transform: uppercase;
-	border-bottom: 2px solid #f1f1f1ad;
-	width: 33%;
+	border-bottom: 2px solid #f1f1f1;
+	width: 30%;
 	padding-bottom: 0.5em;
 }
 
@@ -23,8 +23,8 @@ h2 {
 	font-size: 1.2em;
 	font-weight: 800;
 	text-transform: uppercase;
-	border-bottom: 2px solid #f1f1f1ad;
-	width: 15%;
+	border-bottom: 2px solid #f1f1f1;
+	width: 10%;
 	padding: 0.5em 0;
 }
 
@@ -40,5 +40,5 @@ ul li img{
 }
 
 body{
-    background-color: #b3d7ff;
+    background-color: #cce4ffc4;
 }
