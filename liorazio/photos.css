@@ -8,12 +8,24 @@ h1 {
 	font-family: Raleway;
 	margin-left: 1.66%;
 	margin-top: 2%;
-	font-size: 23px;
+	font-size: 1.5em;
 	font-weight: 800;
 	text-transform: uppercase;
-	border-bottom: 2px solid #f1f1f1;
-	width: 30%;
-	padding-bottom: 20px;
+	border-bottom: 2px solid #f1f1f1ad;
+	width: 33%;
+	padding-bottom: 0.5em;
+}
+
+h2 {
+	font-family: Raleway;
+	margin-left: 1.66%;
+	margin-top: 2%;
+	font-size: 1.2em;
+	font-weight: 800;
+	text-transform: uppercase;
+	border-bottom: 2px solid #f1f1f1ad;
+	width: 15%;
+	padding: 0.5em 0;
 }
 
 ul li{
