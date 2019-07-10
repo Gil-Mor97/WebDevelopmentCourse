@@ -28,6 +28,10 @@ h2 {
 	padding: 0.5em 0;
 }
 
+ul{
+	margin-left: -2.5em;
+}
+
 ul li{
 	width: 30%;
 	float: left;
