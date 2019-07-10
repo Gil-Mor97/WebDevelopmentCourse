@@ -39,10 +39,12 @@ ul li{
 	list-style: none;
 }
 
-ol{
-	margin-bottom: 0rem;
-}
+
 
 body{
     background-color: #cce4ffc4;
 }
+
+/*.carousel-indicators{
+	background-color: grey;
+}*/
