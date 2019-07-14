@@ -21,8 +21,8 @@ h1 {
 h2 {
 	font-family: Raleway;
 	margin-left: 1.66%;
-	margin-top: 7%;
-	font-size: 90%;
+/*	margin-top: 7%;
+*/	font-size: 90%;
 	font-weight: 800;
 	text-transform: uppercase;
 	border-bottom: 2px solid #f1f1f1;
@@ -59,7 +59,7 @@ ul li{
 }
 
 body{
-	padding-top: 2%;
+	padding-top: 5em;
     background-color: #cce4ffc4;
 }
 
