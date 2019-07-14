@@ -66,3 +66,7 @@ body{
 .carousel-indicators{
 	margin-bottom: -0.9em;
 }
+
+.carousel{
+	margin-bottom: 2em;
+}
