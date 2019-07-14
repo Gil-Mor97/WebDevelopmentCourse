@@ -30,12 +30,12 @@ h2 {
 	padding: 0.3em 0;
 }
 
-ul{
+.carousel ul{
 /*	margin-left: -2.5em;
 */	padding: 0 2.9em;
 }
 
-ul li{
+.carousel ul li{
 	width: 30%;
 	float: left;
 	margin: 1.66%;
@@ -69,4 +69,16 @@ body{
 
 .carousel{
 	margin-bottom: 2em;
+}
+
+.navbar-brand{	
+	background-image: url("images/logo.jpg");
+	background-size: 20%;
+	background-repeat: no-repeat;
+	padding: 2% 10% 2% 30%;
+	margin: 0 10%;
+}
+
+.collapse {
+	margin-left: 2%;
 }
