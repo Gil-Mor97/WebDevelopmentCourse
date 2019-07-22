@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+	<games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko"> 
+		<game id="1" category="mammals">
+			<question id="100">Choose only animals which are mammals.</question >
+			<answer id="101" qType="image" isCorrect="true">cat1.jpg</answer>
+			<answer id="102" qType="image" isCorrect="false">butterfly1.jpg</answer>
+			<answer id="103" qType="text" isCorrect="true">Lion</answer>
+			<answer id="104" qType="text" isCorrect="false">Caterpiller</answer>
+		</game>
+	</games>
+</body>
