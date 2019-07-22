@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<books>
+  <book price="20$">
+    <bookName>me and you</bookName>
+    <bookWriter>telem</bookWriter>
+    <publishDate pInHebrew="false">21/7/19</publishDate>
+  </book>
+</books>
