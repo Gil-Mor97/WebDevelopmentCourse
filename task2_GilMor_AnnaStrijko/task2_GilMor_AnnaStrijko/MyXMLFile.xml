@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
+  <game id="1" gamecode="" category="">
+    <question id="100" />
+    <answer id="101" qType="" isCorrect="" />
+  </game>
+</games>
