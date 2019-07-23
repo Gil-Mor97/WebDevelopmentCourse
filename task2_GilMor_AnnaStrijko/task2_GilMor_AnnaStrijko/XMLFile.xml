@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
-  <game id="1">
-    <question>בחרו אך ורק בבעלי חיים ממשפחת היונקים</question>
-    <id>100</id>
-    <publishDate pInHebrew="false">21/7/19</publishDate>
-  </game>
-</games>
