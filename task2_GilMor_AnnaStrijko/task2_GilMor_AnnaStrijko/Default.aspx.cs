@@ -31,12 +31,14 @@ public partial class _Default : System.Web.UI.Page
         a.WriteAttributeString("category", categoryTB.Text);
 
         a.WriteElementString("question", qtnTB.Text);
-        a.WriteAttributeString("id", (gameID * 100) + "");
+        string qtnID = "" + gameID * 100;
+        //a.WriteAttributeString("id", qtnID);
 
         a.WriteElementString("answer", contentTB.Text);
-        a.WriteAttributeString("id", (gameID + 100).ToString());
-        a.WriteAttributeString("qType", typeRBL.SelectedValue);
-        a.WriteAttributeString("isCorrect", correctRBL.SelectedValue);
+        string ansID = "" + gameID + 100 * gameID;
+        //a.WriteAttributeString("id", ansID);
+        //a.WriteAttributeString("qType", typeRBL.SelectedValue);
+        //a.WriteAttributeString("isCorrect", correctRBL.SelectedValue);
 
         a.WriteEndElement();
         a.WriteEndElement();

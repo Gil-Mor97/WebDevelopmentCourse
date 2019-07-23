@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
+  <game id="1" gamecode="101" category="יונקים">
+    <question>בחרו רק בחיות המשתייכות למשפחה היונקים</question>
+    <answer>פרפר</answer>
+  </game>
+</games>
