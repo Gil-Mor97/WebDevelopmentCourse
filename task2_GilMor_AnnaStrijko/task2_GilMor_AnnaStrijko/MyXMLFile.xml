@@ -1,7 +1,1 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
-  <game id="1" gamecode="" category="">
-    <question id="100" />
-    <answer id="101" qType="" isCorrect="" />
-  </game>
-</games>
+﻿<?xml version="1.0" encoding="utf-8"?><games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko"><game id="1" gamecode="101" category="יונקים"><question id="100">לחצו רק על בעלי החיים השייכים למשפח היונקים</question><answer id="101" qType="txt" isCorrect="false">פרפר</answer></game></games>

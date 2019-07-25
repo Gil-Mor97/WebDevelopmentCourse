@@ -21,7 +21,7 @@
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
+<body dir="rtl">
     <h1>בניית XML למשחק HIT-the-DUCK</h1>
     <div class="container col-sm-5">
         <h2>הוספת משחק</h2>
@@ -29,38 +29,40 @@
             <form id="form1" runat="server">
                 <div class="form-group row">
                     <asp:Label ID="categoryLb" runat="server" Text="נושא המשחק" class="col-sm-3"></asp:Label>
-                    <asp:TextBox ID="categoryTB" runat="server" class="form-control col-sm-9"></asp:TextBox>
+                    <asp:TextBox ID="categoryTB" runat="server" class="form-control col-sm-6"></asp:TextBox>
                 </div>
                 <div class="form-group row">
-                    <asp:Label ID="codeLb" runat="server" Text="קוד משחק" CssClass="labels"></asp:Label>
-                    <asp:TextBox ID="codeTB" runat="server" class="form-control"></asp:TextBox>
+                    <asp:Label ID="codeLb" runat="server" Text="קוד משחק" class="col-sm-3"></asp:Label>
+                    <asp:TextBox ID="codeTB" runat="server" class="form-control col-sm-6"></asp:TextBox>
                 </div>
                 <div class="form-group row">
-                    <asp:Label ID="qtnLb" runat="server" Text="שאלת המשחק" CssClass="labels"></asp:Label>
-                    <asp:TextBox ID="qtnTB" runat="server" class="form-control"></asp:TextBox>
+                    <asp:Label ID="qtnLb" runat="server" Text="שאלת המשחק" class="col-sm-3"></asp:Label>
+                    <asp:TextBox ID="qtnTB" runat="server" class="form-control col-sm-6"></asp:TextBox>
                 </div>
                 <br />
-                <div class="form-group">
-                    <h3>הוספת מסיח</h3>
-                    <div class="form-group row">
-                        <asp:Label ID="typeLb" runat="server" Text="סוג המסיח" CssClass="labels"></asp:Label>
-                        <asp:RadioButtonList ID="typeRBL" runat="server" class="form-control">
-                            <asp:ListItem Value="txt">טקסט</asp:ListItem>
-                            <asp:ListItem Value="img">תמונה</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-                    <div class="form-group row">
-                        <asp:Label ID="correctLb" runat="server" Text="האם מסיח אמת או שקר" CssClass="labels"></asp:Label>
-                        <asp:RadioButtonList ID="correctRBL" runat="server">
-                            <asp:ListItem Value="true">מסיח נכון</asp:ListItem>
-                            <asp:ListItem Value="false">מסיח לא נכון</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-                    <div class="form-group row">
-                        <asp:Label ID="contentLb" runat="server" Text="תוכן המסיח"></asp:Label>
-                        <asp:TextBox ID="contentTB" runat="server" class="form-control"></asp:TextBox>
-                    </div>
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" class="btn" />
+
+                <h3>הוספת מסיח</h3>
+                <div class="form-group row">
+                    <asp:Label ID="typeLb" runat="server" Text="סוג המסיח" class="col-sm-3"></asp:Label>
+                    <asp:RadioButtonList ID="typeRBL" runat="server" class="form-control col-sm-6">
+                        <asp:ListItem Value="txt">טקסט</asp:ListItem>
+                        <asp:ListItem Value="img">תמונה</asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+                <div class="form-group row">
+                    <asp:Label ID="correctLb" runat="server" Text="האם מסיח אמת או שקר" class="col-sm-3"></asp:Label>
+                    <asp:RadioButtonList ID="correctRBL" runat="server" class="form-control col-sm-6">
+                        <asp:ListItem Value="true">מסיח נכון</asp:ListItem>
+                        <asp:ListItem Value="false">מסיח לא נכון</asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+                <div class="form-group row">
+                    <asp:Label ID="contentLb" runat="server" Text="תוכן המסיח" class="col-sm-3"></asp:Label>
+                    <asp:TextBox ID="contentTB" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    * שם הקובץ או טקסט
+                </div>
+                <div class="form-group row">
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="יצירת XML" class="btn col-sm-2" />
                 </div>
             </form>
         </div>
