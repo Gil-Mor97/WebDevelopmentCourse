@@ -20,7 +20,8 @@ public partial class _Default : System.Web.UI.Page
         XmlTextWriter a = new XmlTextWriter(Server.MapPath(filename), System.Text.Encoding.UTF8);
         a.WriteStartDocument();
 
-        int gameID = 1;
+        int gameID = 1; 
+        //Game's ID. will be dynamic in the future.
 
         a.WriteStartElement("games");
         a.WriteAttributeString("name", "HIT-the-Duck");
@@ -52,7 +53,8 @@ public partial class _Default : System.Web.UI.Page
         a.WriteEndDocument();
         a.Close();
 
-        Response.Write("<script>alert('The file " + filename + " was created successfully');</script>");
+        Response.Write("<script>alert('The file " + filename + " was created successfully');</script>"); 
+        //Notification after successfully creating the XML file.
     }
 }
 
@@ -68,3 +70,7 @@ public partial class _Default : System.Web.UI.Page
   </game>
  </games>
 */
+
+
+
+

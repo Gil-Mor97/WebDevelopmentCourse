@@ -10,13 +10,17 @@
             direction: rtl;
         }
 
+        * {
+            direction: rtl;
+            text-align: right;
+            padding: 0.1em;
+        }
+
         h1 {
             text-align: center;
         }
-
-        h2, h3 {
-            direction: rtl;
-            text-align: right;
+        #Button2, container{
+            margin: 0 auto;
         }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -37,7 +41,7 @@
                 </div>
                 <div class="form-group row">
                     <asp:Label ID="qtnLb" runat="server" Text="שאלת המשחק" class="col-sm-3"></asp:Label>
-                    <asp:TextBox ID="qtnTB" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    <asp:TextBox ID="qtnTB" runat="server" class="form-control col-sm-6" TextMode="MultiLine"></asp:TextBox>
                 </div>
                 <br />
 
@@ -59,10 +63,10 @@
                 <div class="form-group row">
                     <asp:Label ID="contentLb" runat="server" Text="תוכן המסיח" class="col-sm-3"></asp:Label>
                     <asp:TextBox ID="contentTB" runat="server" class="form-control col-sm-6"></asp:TextBox>
-                    * שם הקובץ או טקסט
+                    <asp:Label ID="Label1" runat="server" Text="* שם קובץ התמונה או טקסט" class="col-sm-12"></asp:Label>
                 </div>
                 <div class="form-group row">
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="יצירת XML" class="btn col-sm-2" />
+                    <asp:Button ID="Button2" runat="server" OnClick="Button1_Click" Text="יצירת XML" class="btn col-md-4    " />
                 </div>
             </form>
         </div>
