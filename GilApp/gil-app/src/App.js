@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UserInput from './UserComps/UserInput';
+import UserOutput from './UserComps/UserOutput';
 
 class App extends Component {
+
+  state = {
+    username: 'Gil'
+  }
+
+  usernameChangedHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -10,9 +22,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <UserInput
+        changed={this.usernameChangedHandler}
+        currentName={this.state.username} />
+        <UserOutput userName={this.state.username} />
+        <UserOutput userName={this.state.username} />
+        <UserOutput userName="Gilgol" />
       </div>
     );
   }
