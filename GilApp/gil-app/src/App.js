@@ -20,14 +20,13 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to My React App!</h1>
         </header>
         <UserInput
         changed={this.usernameChangedHandler}
         currentName={this.state.username} />
-        <UserOutput userName={this.state.username} />
-        <UserOutput userName={this.state.username} />
-        <UserOutput userName="Gilgol" />
+        <UserOutput username={this.state.username} />
+        <UserOutput username="Gilgol" />
       </div>
     );
   }
