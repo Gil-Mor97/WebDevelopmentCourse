@@ -24,15 +24,54 @@ public partial class _Default : System.Web.UI.Page
         {
             TextBox1.Text += b.InnerXml.ToString() + " ";
         }
+    }
 
-        //String c = "<?xml version='1.0' encoding='utf-8'?><catalog><game type=‘casual’><title rating='everyone'>zuma</title><studio>PopCap Games</studio><designer>Jason Kapalka</designer><year>2003</year><price>15.65</price></game></catalog>";
-        //XmlDocument myDoc = new XmlDocument();
-        //myDoc.LoadXml(c);
-        //XmlNode my_node;
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        XmlDocument myDoc = new XmlDocument();
+        myDoc.Load(Server.MapPath("myTree.xml"));
 
-        //my_node = myDoc.SelectNodes("/catalog/game").Item(0);
-        //TextBox1.Text = my_node.OuterXml.ToString();
-        //TextBox2.Text = Convert.ToString(myDoc.SelectNodes("/catalog/game").Count);
+        XmlNodeList a = myDoc.SelectNodes("/catalog/game[@type='casual']/designer");
+        foreach (XmlNode b in a)
+        {
+            TextBox2.Text += b.InnerXml.ToString() + " ";
+        }
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        XmlDocument myDoc = new XmlDocument();
+        myDoc.Load(Server.MapPath("myTree.xml"));
+
+        XmlNodeList a = myDoc.SelectNodes("/catalog/game[3]/designer[3]");
+        foreach (XmlNode b in a)
+        {
+            TextBox3.Text += b.InnerXml.ToString() + " ";
+        }
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        XmlDocument myDoc = new XmlDocument();
+        myDoc.Load(Server.MapPath("myTree.xml"));
+
+        XmlNodeList a = myDoc.SelectNodes("/catalog/game[year<2005]/title");
+        foreach (XmlNode b in a)
+        {
+            TextBox4.Text += b.InnerXml.ToString() + " ";
+        }
+    }
+
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        XmlDocument myDoc = new XmlDocument();
+        myDoc.Load(Server.MapPath("myTree.xml"));
+
+        XmlNodeList a = myDoc.SelectNodes("/catalog/game[price=50.49]/title[@rating='mature']");
+        foreach (XmlNode b in a)
+        {
+            TextBox5.Text += b.InnerXml.ToString() + " ";
+        }
 
     }
 }

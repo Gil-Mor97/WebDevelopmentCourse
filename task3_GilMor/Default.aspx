@@ -19,7 +19,8 @@
         h1 {
             text-align: center;
         }
-        #Button2, container{
+
+        .btn, container {
             margin: 0 auto;
         }
     </style>
@@ -31,22 +32,51 @@
         <h2>הוספת משחק</h2>
         <div class="container col-sm-12">
             <form id="form1" runat="server">
-                <div class="form-group row">
-                    <asp:Label ID="Label1" runat="server" Text="שמות כל המשחקים" class="col-sm-3"></asp:Label>
-                    <asp:TextBox ID="TextBox1" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                <div class="form-group">
+                    <div class="form-group row">
+                        <asp:Label ID="Label1" runat="server" Text="שמות כל המשחקים" class="col-sm-3"></asp:Label>
+                        <asp:TextBox ID="TextBox1" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="הצג" class="btn col-md-4" />
+                    </div>
                 </div>
-                <div class="form-group row">
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="הצג" class="btn col-md-4" />
+                <div class="form-group">
+                    <div class="form-group row">
+                        <asp:Label ID="Label2" runat="server" Text="מעצב המשחק מסוג casual" class="col-sm-3"></asp:Label>
+                        <asp:TextBox ID="TextBox2" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="הצג" class="btn col-md-4" />
+                    </div>
                 </div>
-                <br />
-                <div class="form-group row">
-                    <asp:Label ID="Label2" runat="server" Text="שמות המשחקים מסוג חידה" class="col-sm-3"></asp:Label>
-                    <asp:TextBox ID="TextBox2" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                <div class="form-group">
+                    <div class="form-group row">
+                        <asp:Label ID="Label3" runat="server" Text="המעצב השלישי של המשחק למבוגרים בלבד" class="col-sm-3"></asp:Label>
+                        <asp:TextBox ID="TextBox3" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="הצג" class="btn col-md-4" />
+                    </div>
                 </div>
-                <div class="form-group row">
-                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="הצג" class="btn col-md-4" />
+                <div class="form-group">
+                    <div class="form-group row">
+                        <asp:Label ID="Label4" runat="server" Text="הכותרת הראשונה של המשחקים שפורסמו עד 2005" class="col-sm-3"></asp:Label>
+                        <asp:TextBox ID="TextBox4" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="הצג" class="btn col-md-4" />
+                    </div>
                 </div>
-                <br />
+                <div class="form-group">
+                    <div class="form-group row">
+                        <asp:Label ID="Label5" runat="server" Text="רשות: משחק למבוגרים בלבד שעולה 50.49" class="col-sm-3"></asp:Label>
+                        <asp:TextBox ID="TextBox5" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="הצג" class="btn col-md-4" />
+                    </div>
+                </div>
             </form>
         </div>
     </div>
