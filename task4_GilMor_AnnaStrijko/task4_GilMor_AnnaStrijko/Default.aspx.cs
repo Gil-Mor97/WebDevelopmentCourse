@@ -16,77 +16,130 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string gamecode = TextBox1.Text;
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
+        int gamecode;
+        if (int.TryParse(code_TB.Text, out gamecode))
+        {
+            XmlDocument myDoc = new XmlDocument();
+            myDoc.Load(Server.MapPath("myTree.xml"));
 
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/@isPublished");
-        TextBox1.Text = "";
-        foreach (XmlNode b in a)
-        {
-            TextBox1.Text += b.InnerXml.ToString() + " ";
-        }
-        bool flag;
-        bool.TryParse(TextBox1.Text, out flag);
-        if (flag)
-        {
-            TextBox1.Text = "המשחק מפורסם";
+            XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/@isPublished");
+            TextBox1.Text = "";
+            foreach (XmlNode b in a)
+            {
+                TextBox1.Text += b.InnerXml.ToString() + " ";
+            }
+            bool flag;
+            bool.TryParse(TextBox1.Text, out flag);
+            if (flag)
+            {
+                TextBox1.Text = "המשחק מפורסם";
+            }
+            else
+            {
+                TextBox1.Text = "המשחק אינו מפורסם";
+            }
         }
         else
         {
-            TextBox1.Text = "המשחק אינו מפורסם";
+            TextBox1.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
         }
+
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        string gamecode = TextBox2.Text;
-
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
-
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode +"']/designer");
-        foreach (XmlNode b in a)
+        int gamecode;
+        if (int.TryParse(code_TB.Text, out gamecode))
         {
-            TextBox2.Text += b.InnerXml.ToString() + " ";
+            XmlDocument myDoc = new XmlDocument();
+            myDoc.Load(Server.MapPath("myTree.xml"));
+
+            XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/@name");
+            TextBox2.Text = "";
+            foreach (XmlNode b in a)
+            {
+                TextBox2.Text += b.InnerXml.ToString() + " ";
+            }
+        }
+        else
+        {
+            TextBox2.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
         }
     }
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
-
-        XmlNodeList a = myDoc.SelectNodes("/catalog/game[3]/designer[3]");
-        foreach (XmlNode b in a)
+        int gamecode;
+        if (int.TryParse(code_TB.Text, out gamecode))
         {
-            TextBox3.Text += b.InnerXml.ToString() + " ";
+            XmlDocument myDoc = new XmlDocument();
+            myDoc.Load(Server.MapPath("myTree.xml"));
+
+            XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer");
+            TextBox3.Text = "";
+            foreach (XmlNode b in a)
+            {
+                TextBox3.Text += b.InnerXml.ToString() + "\n";
+            }
+            TextBox3.Text = TextBox3.Text.Substring(0, TextBox3.Text.Length - 1);
+        }
+        else
+        {
+            TextBox3.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
         }
     }
 
     protected void Button4_Click(object sender, EventArgs e)
     {
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
-
-        XmlNodeList a = myDoc.SelectNodes("/catalog/game[year<2005]/title");
-        foreach (XmlNode b in a)
+        int gamecode;
+        if (int.TryParse(code_TB.Text, out gamecode))
         {
-            TextBox4.Text += b.InnerXml.ToString() + " ";
+            XmlDocument myDoc = new XmlDocument();
+            myDoc.Load(Server.MapPath("myTree.xml"));
+
+            XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer[1]/@qType");
+            TextBox4.Text = "";
+            foreach (XmlNode b in a)
+            {
+                TextBox4.Text += b.InnerXml.ToString() + "\n";
+            }
+        }
+        else
+        {
+            TextBox4.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
         }
     }
 
     protected void Button5_Click(object sender, EventArgs e)
     {
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
-
-        XmlNodeList a = myDoc.SelectNodes("/catalog/game[price=50.49]/title[@rating='mature']");
-        foreach (XmlNode b in a)
+        int gamecode;
+        if (int.TryParse(code_TB.Text, out gamecode))
         {
-            TextBox5.Text += b.InnerXml.ToString() + " ";
-        }
+            XmlDocument myDoc = new XmlDocument();
+            myDoc.Load(Server.MapPath("myTree.xml"));
 
+            XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer");
+            TextBox5.Text = "";
+            int count = 0;
+            foreach (XmlNode b in a)
+            {
+                count++;
+            }
+            TextBox5.Text = "במשחק יש " + count + " מסיחים";
+        }
+        else
+        {
+            TextBox5.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
+        }        
+    }
+
+    protected void submit_Click(object sender, EventArgs e)
+    {
+        Button1_Click(sender, e);
+        Button2_Click(sender, e);
+        Button3_Click(sender, e);
+        Button4_Click(sender, e);
+        Button5_Click(sender, e);
     }
 }
 

@@ -34,47 +34,54 @@
             <form id="form1" runat="server">
                 <div class="form-group">
                     <div class="form-group row">
-                        <asp:Label ID="Label1" runat="server" Text="האם המשחק מפורסם בהתאם לקוד המשחק שהוזן" class="col-sm-3"></asp:Label>
+                        <asp:Label ID="Label6" runat="server" Text="הזנת קוד משחק" class="col-sm-4"></asp:Label>
+                        <asp:TextBox ID="code_TB" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <asp:Button ID="Button6" runat="server" OnClick="submit_Click" Text="הצג" class="btn col-md-4" />
+                    </div>
+                    <div class="form-group row">
+                        <asp:Label ID="Label1" runat="server" Text="האם המשחק מפורסם בהתאם לקוד המשחק שהוזן" class="col-sm-4"></asp:Label>
                         <asp:TextBox ID="TextBox1" runat="server" class="form-control col-sm-6"></asp:TextBox>
                     </div>
                     <div class="form-group row">
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="הצג" class="btn col-md-4" />
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="הצג" class="btn col-md-4" Visible="False" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-group row">
-                        <asp:Label ID="Label2" runat="server" Text="שם המשחק בהתאם לקוד המשחק שהוזן" class="col-sm-3"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="שם המשחק בהתאם לקוד המשחק שהוזן" class="col-sm-4"></asp:Label>
                         <asp:TextBox ID="TextBox2" runat="server" class="form-control col-sm-6"></asp:TextBox>
                     </div>
                     <div class="form-group row">
-                        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="הצג" class="btn col-md-4" />
+                        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="הצג" class="btn col-md-4" Visible="False" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-group row">
-                        <asp:Label ID="Label3" runat="server" Text="כל השאלות בהתאם לקוד המשחק שהוזן " class="col-sm-3"></asp:Label>
-                        <asp:TextBox ID="TextBox3" runat="server" class="form-control col-sm-6"></asp:TextBox>
+                        <asp:Label ID="Label3" runat="server" Text="כל השאלות בהתאם לקוד המשחק שהוזן " class="col-sm-4"></asp:Label>
+                        <asp:TextBox ID="TextBox3" runat="server" class="form-control col-sm-6" TextMode="MultiLine"></asp:TextBox>
                     </div>
                     <div class="form-group row">
-                        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="הצג" class="btn col-md-4" />
+                        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="הצג" class="btn col-md-4" Visible="False" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-group row">
-                        <asp:Label ID="Label4" runat="server" Text="סוג הפריט (טקסט או תמונה) של המסיח/הפריט הראשון של המשחק שהתאם לקוד המשחק שהוזן" class="col-sm-3"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="סוג הפריט (טקסט או תמונה) של המסיח/הפריט הראשון של המשחק שהתאם לקוד המשחק שהוזן" class="col-sm-4"></asp:Label>
                         <asp:TextBox ID="TextBox4" runat="server" class="form-control col-sm-6"></asp:TextBox>
                     </div>
                     <div class="form-group row">
-                        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="הצג" class="btn col-md-4" />
+                        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="הצג" class="btn col-md-4" Visible="False" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-group row">
-                        <asp:Label ID="Label5" runat="server" Text="רשות: משחק למבוגרים בלבד שעולה 50.49" class="col-sm-3"></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Text="רשות: מספר השאלות במשחק בהתאם לקוד המשחק שהוזן" class="col-sm-4"></asp:Label>
                         <asp:TextBox ID="TextBox5" runat="server" class="form-control col-sm-6"></asp:TextBox>
                     </div>
                     <div class="form-group row">
-                        <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="הצג" class="btn col-md-4" />
+                        <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="הצג" class="btn col-md-4" Visible="False" />
                     </div>
                 </div>
             </form>

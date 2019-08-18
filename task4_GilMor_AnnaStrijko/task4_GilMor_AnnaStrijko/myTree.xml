@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
-  <game id="1" gamecode="101" name="יונקים" isPublished="true">
+  <game id="1" gamecode="101" name="מצא את היונקים" isPublished="true">
     <question id="100">לחצו רק על בעלי חיים השייכים למשפחת היונקים</question>
     <answer id="101" qType="img" isCorrect="false">butterfly.png</answer>
     <answer id="102" qType="img" isCorrect="true">lion.png</answer>
@@ -25,5 +25,7 @@
     <answer id="208" qType="txt" isCorrect="true">קהיר</answer>
     <answer id="209" qType="txt" isCorrect="false">סידני</answer>
     <answer id="210" qType="txt" isCorrect="true">אנקרה</answer>
+    <answer id="211" qType="txt" isCorrect="true">פריז</answer>
+    <answer id="212" qType="txt" isCorrect="false">מנצ'סטר</answer>
   </game>
 </games>
