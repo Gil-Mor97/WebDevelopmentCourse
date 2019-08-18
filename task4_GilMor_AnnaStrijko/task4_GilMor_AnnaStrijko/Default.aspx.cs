@@ -20,10 +20,21 @@ public partial class _Default : System.Web.UI.Page
         XmlDocument myDoc = new XmlDocument();
         myDoc.Load(Server.MapPath("myTree.xml"));
 
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']");
+        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/@isPublished");
+        TextBox1.Text = "";
         foreach (XmlNode b in a)
         {
             TextBox1.Text += b.InnerXml.ToString() + " ";
+        }
+        bool flag;
+        bool.TryParse(TextBox1.Text, out flag);
+        if (flag)
+        {
+            TextBox1.Text = "המשחק מפורסם";
+        }
+        else
+        {
+            TextBox1.Text = "המשחק אינו מפורסם";
         }
     }
 
