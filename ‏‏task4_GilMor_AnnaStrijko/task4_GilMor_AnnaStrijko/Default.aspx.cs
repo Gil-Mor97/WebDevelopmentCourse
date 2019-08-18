@@ -16,10 +16,11 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        string gamecode = TextBox1.Text;
         XmlDocument myDoc = new XmlDocument();
         myDoc.Load(Server.MapPath("myTree.xml"));
 
-        XmlNodeList a = myDoc.SelectNodes("//title");
+        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']");
         foreach (XmlNode b in a)
         {
             TextBox1.Text += b.InnerXml.ToString() + " ";
@@ -28,10 +29,12 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
+        string gamecode = TextBox2.Text;
+
         XmlDocument myDoc = new XmlDocument();
         myDoc.Load(Server.MapPath("myTree.xml"));
 
-        XmlNodeList a = myDoc.SelectNodes("/catalog/game[@type='casual']/designer");
+        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode +"']/designer");
         foreach (XmlNode b in a)
         {
             TextBox2.Text += b.InnerXml.ToString() + " ";
@@ -77,34 +80,36 @@ public partial class _Default : System.Web.UI.Page
 }
 
 /*
-<?xml version="1.0" encoding="utf-8" ?>
-<catalog>
-  <game type="casual">
-    <title rating="everyone">zuma</title>
-    <studio>PopCap Games</studio>
-    <designer>Jason Kapalka</designer>
-    <year>2003</year>
-    <price>15.65</price>
+<?xml version="1.0" encoding="utf-8"?>
+<games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
+  <game id="1" gamecode="101" name="יונקים" isPublished="true">
+    <question id="100">לחצו רק על בעלי חיים השייכים למשפחת היונקים</question>
+    <answer id="101" qType="img" isCorrect="false">butterfly.png</answer>
+    <answer id="102" qType="img" isCorrect="true">lion.png</answer>
+    <answer id="103" qType="txt" isCorrect="true">dolphin.png</answer>
+    <answer id="104" qType="txt" isCorrect="false">זחל</answer>
+    <answer id="105" qType="img" isCorrect="false">שקנאי</answer>
+    <answer id="106" qType="img" isCorrect="true">לוויתן</answer>
+    <answer id="107" qType="txt" isCorrect="false">snake.png</answer>
+    <answer id="108" qType="txt" isCorrect="true">cat.png</answer>
+    <answer id="109" qType="img" isCorrect="false">כריש</answer>
+    <answer id="110" qType="txt" isCorrect="true">כלב</answer>
   </game>
-  <game type="puzzle">
-    <title rating="10+">World of Goo</title>
-    <studio>2D Boy</studio>
-    <designer>Kyle Gabler</designer>
-    <designer>Ron Carmel</designer>
-    <year>2008</year>
-    <price>20.00</price>
+  <game id="2" gamecode="102" name="ערי בירה" isPublished="false">
+    <question id="200">לחצו רק על ערי הבירה</question>
+    <answer id="202" qType="txt" isCorrect="false">תל אביב</answer>
+    <answer id="202" qType="txt" isCorrect="true">ירושלים</answer>
+    <answer id="203" qType="txt" isCorrect="true">וושינגטון די.סי.</answer>
+    <answer id="204" qType="txt" isCorrect="false">חיפה</answer>
+    <answer id="205" qType="txt" isCorrect="false">ניו יורק</answer>
+    <answer id="206" qType="txt" isCorrect="true">טוקיו</answer>
+    <answer id="207" qType="txt" isCorrect="false">לוס אנג'לס</answer>
+    <answer id="208" qType="txt" isCorrect="true">קהיר</answer>
+    <answer id="209" qType="txt" isCorrect="false">סידני</answer>
+    <answer id="210" qType="txt" isCorrect="true">אנקרה</answer>
   </game>
-  <game type="fps">
-    <title rating="mature">Far cry</title>
-    <studio>Ubisoft</studio>
-    <designer>Patrick Redding</designer>
-    <designer>Alexandre Amacio</designer>
-    <designer>Dominique Guay</designer>
-    <designer>Clint Hocking</designer>
-    <year>2008</year>
-    <price>50.49</price>
-  </game>
-</catalog>
+</games>
+
 
 */
 
