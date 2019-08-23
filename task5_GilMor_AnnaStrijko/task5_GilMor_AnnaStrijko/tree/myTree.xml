@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <games name="HIT-the-Duck" authors="Gil Mor and Anna Strijko">
   <game id="1" gamecode="101" name="מצא את היונקים" isPublished="true">
     <question id="100">לחצו רק על בעלי חיים השייכים למשפחת היונקים</question>
@@ -15,7 +15,7 @@
   </game>
   <game id="2" gamecode="102" name="ערי בירה" isPublished="false">
     <question id="200">לחצו רק על ערי הבירה</question>
-    <answer id="202" qType="txt" isCorrect="false">תל אביב</answer>
+    <answer id="201" qType="txt" isCorrect="false">תל אביב</answer>
     <answer id="202" qType="txt" isCorrect="true">ירושלים</answer>
     <answer id="203" qType="txt" isCorrect="true">וושינגטון די.סי.</answer>
     <answer id="204" qType="txt" isCorrect="false">חיפה</answer>

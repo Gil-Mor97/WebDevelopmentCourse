@@ -9,138 +9,144 @@ using System.Xml;
 
 public partial class _Default : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Init(object sender, EventArgs e)
     {
-
-    }
-
-protected void Button1_Click(object sender, EventArgs e)
-{
-    int gamecode;
-    if (int.TryParse(code_TB.Text, out gamecode))
-    {
+        //gamecode = int.Parse(code_TB.Text);
         XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
+        myDoc.Load(Server.MapPath("tree/myTree.xml"));
 
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/@isPublished");
-        TextBox1.Text = "";
+        XmlNodeList dd_a = myDoc.SelectNodes("/games//game");
+
+        foreach (XmlNode b in dd_a)
+        {
+            ListItem listItem = new ListItem();
+            listItem.Text = b.Attributes["gamecode"].InnerXml.ToString();
+            listItem.Value = b.Attributes["gamecode"].InnerXml.ToString();
+            DropDownList1.Items.Add(listItem);
+        }
+
+        DropDownList1.SelectedIndex = 0;
+        DropDownList1.DataBind();
+
+        int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
+
+        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']//answer");
+        int indx = 1;
         foreach (XmlNode b in a)
         {
-            TextBox1.Text += b.InnerXml.ToString() + " ";
+            ListItem listItem = new ListItem();
+            listItem.Text = b.InnerXml.ToString();
+            listItem.Value = (gamecode - 100) * 100 + indx + "";
+            RadioButtonList1.Items.Add(listItem);
+            indx++;
         }
-        bool flag;
-        bool.TryParse(TextBox1.Text, out flag);
-        if (flag)
+        RadioButtonList1.SelectedIndex = 0;
+        RadioButtonList1.DataBind();
+
+        TextBox textBox1 = new TextBox();
+        textBox1.Text = RadioButtonList1.SelectedItem.Text;
+        textBox1.ID = "itemTB";
+        Panel1.Controls.Add(textBox1);
+
+        RadioButtonList ansRBL = new RadioButtonList();
+        ansRBL.ID = "ansRBL";
+
+        ListItem listItem1 = new ListItem();
+        listItem1.Text = "נכון";
+        listItem1.Value = "0";
+        ansRBL.Items.Add(listItem1);
+
+        listItem1 = new ListItem();
+        listItem1.Text = "לא נכון";
+        listItem1.Value = "1";
+        ansRBL.Items.Add(listItem1);
+
+        XmlNode BTE = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
+        if (BTE.Attributes["isCorrect"].Value == "true")
         {
-            TextBox1.Text = "המשחק מפורסם";
+            ansRBL.SelectedIndex = 0;
         }
         else
         {
-            TextBox1.Text = "המשחק אינו מפורסם";
+            ansRBL.SelectedIndex = 1;
         }
-    }
-    else
-    {
-        TextBox1.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
+        Panel1.Controls.Add(ansRBL);
+
+        Button editBut = new Button();
+        editBut.Click += new EventHandler(ItemEdit);
+        editBut.ID = "editBut";
+        editBut.Text = "עדכון פריט";
+        Panel1.Controls.Add(editBut);
+
+        Panel1.DataBind();
     }
 
-}
-
-protected void Button2_Click(object sender, EventArgs e)
-{
-    int gamecode;
-    if (int.TryParse(code_TB.Text, out gamecode))
+    protected void RblLoad(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
+        myDoc.Load(Server.MapPath("tree/myTree.xml"));
+        int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
 
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/@name");
-        TextBox2.Text = "";
+        RadioButtonList1.Items.Clear();
+
+        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']//answer");
+        int indx = 1;
         foreach (XmlNode b in a)
         {
-            TextBox2.Text += b.InnerXml.ToString() + " ";
+            ListItem listItem = new ListItem();
+            listItem.Text = b.InnerXml.ToString();
+            listItem.Value = (gamecode - 100) * 100 + indx + "";
+            RadioButtonList1.Items.Add(listItem);
+            indx++;
         }
-    }
-    else
-    {
-        TextBox2.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
-    }
-}
+        RadioButtonList1.SelectedIndex = 0;
+        RadioButtonList1.DataBind();
 
-protected void Button3_Click(object sender, EventArgs e)
-{
-    int gamecode;
-    if (int.TryParse(code_TB.Text, out gamecode))
+        RblChange(sender, e);
+    }
+
+    protected void RblChange(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
+        myDoc.Load(Server.MapPath("tree/myTree.xml"));
+        int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
 
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer");
-        TextBox3.Text = "";
-        foreach (XmlNode b in a)
+        TextBox textBox1 = (TextBox)FindControl("itemTB");
+        textBox1.Text = RadioButtonList1.SelectedItem.Text;
+        RadioButtonList ansRBL = (RadioButtonList)FindControl("ansRBL");
+
+        XmlNode BTE = myDoc.SelectNodes("/games/game[@gamecode=" + gamecode + "]/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
+        if (BTE.Attributes["isCorrect"].Value == "true")
         {
-            TextBox3.Text += b.InnerXml.ToString() + "\n";
+            ansRBL.SelectedIndex = 0;
         }
-        TextBox3.Text = TextBox3.Text.Substring(0, TextBox3.Text.Length - 1);
+        else
+        {
+            ansRBL.SelectedIndex = 1;
+        }
     }
-    else
-    {
-        TextBox3.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
-    }
-}
 
-protected void Button4_Click(object sender, EventArgs e)
-{
-    int gamecode;
-    if (int.TryParse(code_TB.Text, out gamecode))
+    protected void ItemEdit(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
+        myDoc.Load(Server.MapPath("tree/myTree.xml"));
+        int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
 
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer[1]/@qType");
-        TextBox4.Text = "";
-        foreach (XmlNode b in a)
+        XmlNode BTE = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
+        if (((RadioButtonList)FindControl("ansRBL")).SelectedItem.Text == "נכון")
         {
-            TextBox4.Text += b.InnerXml.ToString() + "\n";
+            BTE.Attributes["isCorrect"].Value = "true";
         }
-    }
-    else
-    {
-        TextBox4.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
-    }
-}
-
-protected void Button5_Click(object sender, EventArgs e)
-{
-    int gamecode;
-    if (int.TryParse(code_TB.Text, out gamecode))
-    {
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("myTree.xml"));
-
-        XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer");
-        TextBox5.Text = "";
-        int count = 0;
-        foreach (XmlNode b in a)
+        else
         {
-            count++;
+            BTE.Attributes["isCorrect"].Value = "false";
         }
-        TextBox5.Text = "במשחק יש " + count + " מסיחים";
-    }
-    else
-    {
-        TextBox5.Text = "נא להזין קוד משחק העשוי ממספרים בלבד";
-    }        
-}
+        BTE.InnerXml = ((TextBox)FindControl("itemTB")).Text;
+        RadioButtonList1.SelectedItem.Text = ((TextBox)FindControl("itemTB")).Text;
 
-protected void submit_Click(object sender, EventArgs e)
-{
-    Button1_Click(sender, e);
-    Button2_Click(sender, e);
-    Button3_Click(sender, e);
-    Button4_Click(sender, e);
-    Button5_Click(sender, e);
-}
+        myDoc.Save(Server.MapPath("tree/myTree.xml"));
+        RblChange(sender, e);
+    }
 }
 
 /*
