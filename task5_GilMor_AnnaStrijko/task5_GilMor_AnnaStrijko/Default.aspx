@@ -29,7 +29,6 @@
 <body dir="rtl">
     <h1>עריכת XML למשחק HIT-the-DUCK</h1>
     <div class="container col-sm-5">
-        <h2>הוספת משחק</h2>
         <div class="container col-sm-12">
             <form id="form1" runat="server">
 

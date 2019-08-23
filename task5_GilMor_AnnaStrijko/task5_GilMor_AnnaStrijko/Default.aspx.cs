@@ -11,12 +11,11 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Init(object sender, EventArgs e)
     {
-        //gamecode = int.Parse(code_TB.Text);
         XmlDocument myDoc = new XmlDocument();
         myDoc.Load(Server.MapPath("tree/myTree.xml"));
 
+        //טעינת המשחקים כדי ליצור רשימה של קודי משחק
         XmlNodeList dd_a = myDoc.SelectNodes("/games//game");
-
         foreach (XmlNode b in dd_a)
         {
             ListItem listItem = new ListItem();
@@ -25,11 +24,11 @@ public partial class _Default : System.Web.UI.Page
             DropDownList1.Items.Add(listItem);
         }
 
-        DropDownList1.SelectedIndex = 0;
+        DropDownList1.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
         DropDownList1.DataBind();
 
         int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
-
+        //טעינת הפריטים לרשימה
         XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']//answer");
         int indx = 1;
         foreach (XmlNode b in a)
@@ -40,8 +39,9 @@ public partial class _Default : System.Web.UI.Page
             RadioButtonList1.Items.Add(listItem);
             indx++;
         }
-        RadioButtonList1.SelectedIndex = 0;
+        RadioButtonList1.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
         RadioButtonList1.DataBind();
+        //יצירת פקדים דינאמיים להצגת ועדכון הפריט
 
         TextBox textBox1 = new TextBox();
         textBox1.Text = RadioButtonList1.SelectedItem.Text;
@@ -62,9 +62,9 @@ public partial class _Default : System.Web.UI.Page
         ansRBL.Items.Add(listItem1);
 
         XmlNode BTE = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
-        if (BTE.Attributes["isCorrect"].Value == "true")
+        if (BTE.Attributes["isCorrect"].Value == "true") //עדכון המאפיין של הפריט בהתאם לערכו בעץ
         {
-            ansRBL.SelectedIndex = 0;
+            ansRBL.SelectedIndex = 0; 
         }
         else
         {
@@ -81,13 +81,14 @@ public partial class _Default : System.Web.UI.Page
         Panel1.DataBind();
     }
 
+    //טעינת רשימת הפריטים לאחר החלפת קוד משחק
     protected void RblLoad(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
         myDoc.Load(Server.MapPath("tree/myTree.xml"));
         int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
 
-        RadioButtonList1.Items.Clear();
+        RadioButtonList1.Items.Clear(); //הסרת הפריטים הנוכחיים מהרשימה
 
         XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']//answer");
         int indx = 1;
@@ -99,12 +100,13 @@ public partial class _Default : System.Web.UI.Page
             RadioButtonList1.Items.Add(listItem);
             indx++;
         }
-        RadioButtonList1.SelectedIndex = 0;
+        RadioButtonList1.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
         RadioButtonList1.DataBind();
 
-        RblChange(sender, e);
+        RblChange(sender, e); //קריאה לפעולה לטעינת הפריט הנבחר לאחר החלפת המשחק
     }
 
+    //פעולה שמטפלת בשינוי בחירת פריט ברשימה
     protected void RblChange(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
@@ -126,6 +128,7 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    //פעולה שמעכדנת את עץ הXML 
     protected void ItemEdit(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
@@ -133,7 +136,7 @@ public partial class _Default : System.Web.UI.Page
         int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
 
         XmlNode BTE = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
-        if (((RadioButtonList)FindControl("ansRBL")).SelectedItem.Text == "נכון")
+        if (((RadioButtonList)FindControl("ansRBL")).SelectedItem.Text == "נכון") //בדיקה האם נבחר "נכון" או "לא נכון" בעריכת הפריט
         {
             BTE.Attributes["isCorrect"].Value = "true";
         }
@@ -141,11 +144,11 @@ public partial class _Default : System.Web.UI.Page
         {
             BTE.Attributes["isCorrect"].Value = "false";
         }
-        BTE.InnerXml = ((TextBox)FindControl("itemTB")).Text;
+        BTE.InnerXml = ((TextBox)FindControl("itemTB")).Text; //עדכון תוכן הפריט
         RadioButtonList1.SelectedItem.Text = ((TextBox)FindControl("itemTB")).Text;
 
         myDoc.Save(Server.MapPath("tree/myTree.xml"));
-        RblChange(sender, e);
+        RblChange(sender, e); //קריאה לפעולה לטעינת הפריט מחדש לאחר העדכון
     }
 }
 
