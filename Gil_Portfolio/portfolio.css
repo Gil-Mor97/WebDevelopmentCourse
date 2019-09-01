@@ -1,0 +1,84 @@
+img {
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+}
+
+
+h1 {
+	font-family: Raleway;
+	margin-top: -3px
+/*	margin-left: 1.66%;
+	margin-top: 3%;
+	margin-bottom: 5%;
+	font-size: 120%;
+	font-weight: 800;*/
+/*	text-transform: uppercase;
+	border-bottom: 2px solid #f1f1f1;
+	width: 30%;*/
+}
+
+h2 {
+	font-family: Raleway;
+	margin-left: 1.66%;
+/*	margin-top: 7%;
+*/	font-size: 90%;
+	font-weight: 800;
+	text-transform: uppercase;
+	border-bottom: 2px solid #f1f1f1;
+	width: 10%;
+	padding: 0.3em 0;
+}
+
+.carousel ul{
+/*	margin-left: -2.5em;
+*/	padding: 0 2.9em;
+}
+
+.carousel ul li{
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+	list-style: none;
+}
+
+/*ul li:hover{
+	-webkit-transition: all 2s ease;
+	-moz-transition: all 2s ease;
+	-ms-transition: all 2s ease;
+	-o-transition: all 2s ease;
+	transition: all 2s ease;
+	transform: scale(2);
+	float: left;
+	margin: 2em;
+}*/
+
+#catsGal div
+{
+	margin: 1% 0;
+}
+
+body{
+	padding-top: 5em;
+    background-color: #cce4ffc4;
+}
+
+.carousel-indicators{
+	margin-bottom: -0.9em;
+}
+
+.carousel{
+	margin-bottom: 2em;
+}
+
+.navbar-brand{	
+	background-image: url("images/logo.JPG");
+	background-size: 20%;
+	background-repeat: no-repeat;
+	padding: 2% 10% 2% 30%;
+	margin: 0 10%;
+}
+
+.collapse {
+	margin-left: 2%;
+}
