@@ -12,7 +12,7 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Init(object sender, EventArgs e)
     {
         XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("XMLFiles/students.xml"));
+        myDoc.Load(Server.MapPath("XMLFiles/games.xml"));
 
         //טעינת המשחקים כדי ליצור רשימה של קודי משחק
         XmlNodeList dd_a = myDoc.SelectNodes("/games//game");
@@ -27,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
         DropDownList1.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
         DropDownList1.DataBind();
 
-        int gamecode = int.Parse(DropDownList1.SelectedItem.Text);
+        string gamecode = Session["theItemIdSession"].ToString();
         //טעינת הפריטים לרשימה
         XmlNodeList a = myDoc.SelectNodes("/games/game[@gamecode='" + gamecode + "']//answer");
         int indx = 1;
@@ -35,7 +35,8 @@ public partial class _Default : System.Web.UI.Page
         {
             ListItem listItem = new ListItem();
             listItem.Text = b.InnerXml.ToString();
-            listItem.Value = (gamecode - 100) * 100 + indx + "";
+            //listItem.Value = (gamecode - 100) * 100 + indx + "";
+            listItem.Value = b.Attributes["id"].Value;
             RadioButtonList1.Items.Add(listItem);
             indx++;
         }

@@ -86,19 +86,18 @@ public partial class _Default : System.Web.UI.Page
         {
             //אם נלחץ על כפתור מחיקה יקרא לפונקציה של מחיקה                    
             case "deleteRow":
-                deleteRow(theId);
+                DeleteRow(theId);
                 break;
 
             //אם נלחץ על כפתור עריכה (העפרון) נעבור לדף עריכה                    
             case "editRow":
-
-                Response.Redirect("Edit.aspx");
+                Response.Redirect("/Edit.aspx");
                 break;
         }
 
     }
     //מחיקת סטודנט
-    void deleteRow(string theItemId)
+    void DeleteRow(string theItemId)
     {
         //הסרת ענף של משחק קיים באמצעות זיהוי האיי דיי שניתן לו על ידי לחיצה עליו מתוך הטבלה
         //שמירה ועדכון לתוך העץ ולגריד ויו
