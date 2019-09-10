@@ -40,6 +40,9 @@
                     <div class="form-group row">
                         <asp:Panel ID="Panel1" runat="server"></asp:Panel>
                     </div>
+                    <div class="form-group row">
+                        <asp:Button ID="back" runat="server" Text="בחזרה לעמוד הראשי" OnClick="back_Click" />
+                    </div>
                 </div>
             </form>
         </div>

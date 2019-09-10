@@ -15,7 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Name of Student:<asp:TextBox ID="addNameTB" runat="server"></asp:TextBox>
+            שם המשחק <asp:TextBox ID="addNameTB" runat="server"></asp:TextBox>
             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/add.png" OnClick="ImageButton1_Click" />
             <br />
             <br />

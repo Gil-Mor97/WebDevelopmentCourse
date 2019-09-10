@@ -22,6 +22,7 @@ public partial class _Default : System.Web.UI.Page
         myId++;
         string myNewId = myId.ToString();
         xmlDoc.SelectSingleNode("//idCounter").InnerXml = myNewId;
+
         // יצירת ענף משחק     
         XmlElement myNewGametNode = xmlDoc.CreateElement("game");
         myNewGametNode.SetAttribute("id", myNewId);
@@ -29,26 +30,15 @@ public partial class _Default : System.Web.UI.Page
         myNewGametNode.SetAttribute("isPublished", "false");
         myNewGametNode.SetAttribute("gamecode", (1000 + int.Parse(myNewId)).ToString());
 
-        // יצירת ענף שם הסטודנט
-        //XmlElement myNewNameNode = xmlDoc.CreateElement("name");
-        //myNewNameNode.InnerXml = Server.UrlEncode(addNameTB.Text);
-        //myNewGametNode.AppendChild(myNewNameNode);
-
-        //// יצירת ענף ציונים ללא הציונים עצמם
-        //XmlElement myGradesNode = xmlDoc.CreateElement("grades");
-        //myNewGametNode.AppendChild(myGradesNode);
-
         XmlNode FirstGame = xmlDoc.SelectNodes("/HIT-the-Duck/game").Item(0);
         XmlNode LastGame = xmlDoc.SelectNodes("/HIT-the-Duck").Item(0).LastChild;
         xmlDoc.SelectSingleNode("/HIT-the-Duck").InsertAfter(myNewGametNode, LastGame);
         XmlDataSource1.Save();
         GridView1.DataBind();
         addNameTB.Text = "";
-
-
     }
 
-    // פונקציה זו תרוץ בעת לחיצה על תיבות הטקסט
+    //פונקציה זו תרוץ בעת לחיצה על כפתור הפרסום
     protected void isPassCheckBox_CheckedChanged(object sender, EventArgs e)
     {
         // טעינה של העץ
@@ -68,18 +58,15 @@ public partial class _Default : System.Web.UI.Page
         //שמירה בעץ והצגה
         XmlDataSource1.Save();
         GridView1.DataBind();
-
     }
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-
         // תחילה אנו מבררים מהו ה -אי די- של הפריט בעץ ה אקס אם אל
         ImageButton i = (ImageButton)e.CommandSource;
-        // אנו מושכים את האי די של הפריט באמצעות מאפיין לא שמור במערכת שהוספנו באופן ידני לכפתור-תמונה
+        // אנו מושכים את המזהה של הפריט באמצעות מאפיין לא שמור במערכת שהוספנו באופן ידני לכפתור-תמונה
         string theId = i.Attributes["theItemId"];
         Session["theItemIdSession"] = i.Attributes["theItemId"];
-
 
         // עלינו לברר איזו פקודה צריכה להתבצע - הפקודה רשומה בכל כפתור             
         switch (e.CommandName)
@@ -94,9 +81,9 @@ public partial class _Default : System.Web.UI.Page
                 Response.Redirect("/Edit.aspx");
                 break;
         }
-
     }
-    //מחיקת סטודנט
+
+    //מחיקת משחק
     void DeleteRow(string theItemId)
     {
         //הסרת ענף של משחק קיים באמצעות זיהוי האיי דיי שניתן לו על ידי לחיצה עליו מתוך הטבלה
@@ -107,7 +94,6 @@ public partial class _Default : System.Web.UI.Page
 
         XmlDataSource1.Save();
         GridView1.DataBind();
-
     }
 
 }
