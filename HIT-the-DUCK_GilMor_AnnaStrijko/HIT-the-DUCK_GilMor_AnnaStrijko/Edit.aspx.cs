@@ -14,7 +14,11 @@ public partial class _Default : System.Web.UI.Page
         XmlDocument myDoc = new XmlDocument();
         myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
 
-        string gameid = Session["theItemIdSession"].ToString();
+        //string gameid = Session["theItemIdSession"].ToString();
+        string gameid = "1001";
+
+        //gamename.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']")[0].ToString();
+        instruction.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/question").Item(0).ToString();
         //טעינת הפריטים לרשימה
         XmlNodeList a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']//answer");
         int indx = 1;
