@@ -15,10 +15,10 @@ public partial class _Default : System.Web.UI.Page
         myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
 
         //string gameid = Session["theItemIdSession"].ToString();
-        string gameid = "1001";
+        string gameid = "1";
 
-        //gamename.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']")[0].ToString();
-        instruction.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/question").Item(0).ToString();
+        gamename.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']")[0].Attributes["name"].Value;
+        instructions.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/question").Item(0).InnerXml.ToString();
         //טעינת הפריטים לרשימה
         XmlNodeList a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']//answer");
         int indx = 1;
@@ -80,7 +80,38 @@ public partial class _Default : System.Web.UI.Page
             label.ID = "label1";
             Panel1.Controls.Add(label);
         }
+
+        a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@isCorrect='true']");
+        indx = 1;
+        foreach (XmlNode b in a)
+        {
+            ListItem listItem = new ListItem();
+            listItem.Text = b.InnerXml.ToString();
+            //listItem.Value = (gamecode - 100) * 100 + indx + "";
+            listItem.Value = b.Attributes["id"].Value;
+            CorrectRBL.Items.Add(listItem);
+            indx++;
+        }
+        CorrectRBL.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
+        CorrectRBL.DataBind();
+
+        a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@isCorrect='false']");
+        indx = 1;
+        foreach (XmlNode b in a)
+        {
+            ListItem listItem = new ListItem();
+            listItem.Text = b.InnerXml.ToString();
+            //listItem.Value = (gamecode - 100) * 100 + indx + "";
+            listItem.Value = b.Attributes["id"].Value;
+            IncorrectRBL.Items.Add(listItem);
+            indx++;
+        }
+        IncorrectRBL.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
+        IncorrectRBL.DataBind();
+
+        RadioButtonList1.Visible = false;
     }
+
 
     //טעינת רשימת הפריטים לאחר החלפת קוד משחק
     protected void RblLoad(object sender, EventArgs e)

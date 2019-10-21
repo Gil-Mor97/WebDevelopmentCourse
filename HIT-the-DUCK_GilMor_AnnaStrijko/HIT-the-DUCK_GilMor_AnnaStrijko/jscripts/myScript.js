@@ -1,5 +1,8 @@
 ﻿//כאשר העמוד נטען
 $(document).ready(function () {
+    $(".CharacterCount").each(function () {
+        checkCharacter($(this)); //קריאה לפונקציה שבודקת את מספר התווים
+    });
 
     //בהקלדה בתיבת הטקסט
     $(".CharacterCount").keyup(function () {    
