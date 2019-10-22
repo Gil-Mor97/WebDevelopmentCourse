@@ -1,0 +1,44 @@
+﻿body {
+    direction: rtl;
+}
+
+/*הגדרות לחלון האפור*/
+#grayWindows {
+    background-color: rgba(128, 128, 128,0.5);
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/*הגדרות לכפתור היציאה*/
+.Exit {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+/*הגדרות לחלון הפופ-אפ*/
+.PopUp {
+    /*display: none;*/
+    position: absolute;
+    width: 300px;
+    background-color: white;
+    /*הגדרות שיגרמו לחלון תמיד להיות באמצע המסך*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*העלמת פקדי העלאת תמונה*/
+#FileUpload1, #FileUploadWrong {
+    visibility: hidden;
+    width: 1px;
+}
+
+/*קביעת גודל לתמונות*/
+#ImageforUpload1, #ImageforUploadWrong {
+    width: 150px;
+    height: 150px;
+}

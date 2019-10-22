@@ -6,13 +6,13 @@
     <question>לחצו רק על בעלי חיים השייכים למשפחת היונקים</question>
     <answer id="1" qType="img" isCorrect="false">butterfly.png</answer>
     <answer id="2" qType="img" isCorrect="true">lion.png</answer>
-    <answer id="3" qType="txt" isCorrect="true">dolphin.png</answer>
+    <answer id="3" qType="img" isCorrect="true">dolphin.png</answer>
     <answer id="4" qType="txt" isCorrect="false">זחל</answer>
-    <answer id="5" qType="img" isCorrect="false">שקנאי</answer>
-    <answer id="6" qType="img" isCorrect="true">לוויתן</answer>
-    <answer id="7" qType="txt" isCorrect="false">snake.png</answer>
-    <answer id="8" qType="txt" isCorrect="true">cat.png</answer>
-    <answer id="9" qType="img" isCorrect="false">כריש</answer>
+    <answer id="5" qType="txt" isCorrect="false">שקנאי</answer>
+    <answer id="6" qType="txt" isCorrect="true">לוויתן</answer>
+    <answer id="7" qType="img" isCorrect="false">snake.png</answer>
+    <answer id="8" qType="img" isCorrect="true">cat.png</answer>
+    <answer id="9" qType="txt" isCorrect="false">כריש</answer>
     <answer id="10" qType="txt" isCorrect="true">כלב</answer>
   </game>
   <game id="2" gamecode="1002" name="ערי בירה" isPublished="False">

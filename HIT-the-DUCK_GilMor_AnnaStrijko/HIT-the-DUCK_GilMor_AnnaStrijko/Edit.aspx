@@ -30,6 +30,11 @@
         .btn, container {
             margin: 0 auto;
         }
+
+        .datalist{
+            padding: 10px;
+            margin: 100px;
+        }
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
@@ -60,12 +65,42 @@
                         <span id="instuction-ok" class="fas fa-check-circle"></span><span>הנחייה לזיהוי</span>
                     </div>
                     <div class="form-group row">
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RblChange">
+                        <asp:RadioButtonList Visible="false" ID="RadioButtonList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RblChange">
                         </asp:RadioButtonList>
-                        <asp:RadioButtonList ID="CorrectRBL" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RblChange">
+                        <asp:RadioButtonList Visible="false" ID="CorrectRBL" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RblChange">
                         </asp:RadioButtonList>
-                        <asp:RadioButtonList ID="IncorrectRBL" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RblChange">
+                        <asp:RadioButtonList Visible="false" ID="IncorrectRBL" runat="server" AutoPostBack="true" OnSelectedIndexChanged="RblChange">
                         </asp:RadioButtonList>
+                    </div>
+                    <div class="form-group row">
+                        <asp:DataList ID="DataListCorrect" runat="server" DataSourceID="XmlDataSource_Correct" OnSelectedIndexChanged="ItemSelect">
+                            <HeaderTemplate>
+                                מסיחים נכונים
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnkSelect" runat="server" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@id")%>' CommandName="Select">
+                                    <asp:Label ID="NameLabel" runat="server" Text='<%#XPath("text()")%>'></asp:Label>
+                                    <asp:Image ID="ImageQR" Width="50px" runat="server" />
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                            <ItemStyle Height="50px" Width="50px" CssClass="datalist"/>
+                            <SelectedItemStyle BackColor="Yellow"></SelectedItemStyle>
+                        </asp:DataList>
+                        <asp:XmlDataSource ID="XmlDataSource_Correct" runat="server" DataFile="~/XMLFiles/games.xml"></asp:XmlDataSource>
+                        <asp:DataList ID="DataListIncorrect" runat="server" DataSourceID="XmlDataSource_Incorrect" OnSelectedIndexChanged="ItemSelect">
+                            <HeaderTemplate>
+                                מסיחים לא נכונים
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnkSelect" runat="server" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@id")%>' CommandName="Select">
+                                    <asp:Label ID="NameLabel" runat="server" Text='<%#XPath("text()")%>'></asp:Label>
+                                    <asp:Image ID="ImageQR" Width="50px" runat="server" />
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                            <ItemStyle Height="50px" Width="50px" CssClass="datalist"/>
+                            <SelectedItemStyle BackColor="Yellow"></SelectedItemStyle>
+                        </asp:DataList>
+                        <asp:XmlDataSource ID="XmlDataSource_Incorrect" runat="server" DataFile="~/XMLFiles/games.xml"></asp:XmlDataSource>
                     </div>
                     <div class="form-group row">
                         <asp:Panel ID="Panel1" runat="server"></asp:Panel>
