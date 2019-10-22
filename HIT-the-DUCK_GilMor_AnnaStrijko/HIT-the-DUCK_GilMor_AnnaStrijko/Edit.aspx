@@ -31,7 +31,7 @@
             margin: 0 auto;
         }
 
-        .datalist{
+        .datalist {
             padding: 10px;
             margin: 100px;
         }
@@ -83,7 +83,7 @@
                                     <asp:Image ID="ImageQR" Width="50px" runat="server" />
                                 </asp:LinkButton>
                             </ItemTemplate>
-                            <ItemStyle Height="50px" Width="50px" CssClass="datalist"/>
+                            <ItemStyle Height="50px" Width="50px" CssClass="datalist" />
                             <SelectedItemStyle BackColor="Yellow"></SelectedItemStyle>
                         </asp:DataList>
                         <asp:XmlDataSource ID="XmlDataSource_Correct" runat="server" DataFile="~/XMLFiles/games.xml"></asp:XmlDataSource>
@@ -97,13 +97,20 @@
                                     <asp:Image ID="ImageQR" Width="50px" runat="server" />
                                 </asp:LinkButton>
                             </ItemTemplate>
-                            <ItemStyle Height="50px" Width="50px" CssClass="datalist"/>
+                            <ItemStyle Height="50px" Width="50px" CssClass="datalist" />
                             <SelectedItemStyle BackColor="Yellow"></SelectedItemStyle>
                         </asp:DataList>
                         <asp:XmlDataSource ID="XmlDataSource_Incorrect" runat="server" DataFile="~/XMLFiles/games.xml"></asp:XmlDataSource>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group">
                         <asp:Panel ID="Panel1" runat="server"></asp:Panel>
+                        <asp:TextBox ID="itemTB" runat="server" Text="תוכן המסיח"></asp:TextBox>
+                        <asp:RadioButtonList ID="ansRBL" runat="server">
+                            <asp:ListItem Text="נכון" Value="true"></asp:ListItem>
+                            <asp:ListItem Text="לא נכון" Value="false"></asp:ListItem>
+                        </asp:RadioButtonList>
+                        <asp:Button ID="Button1" runat="server" Text="עדכן מסיח" />
+
                     </div>
                     <div class="form-group row">
                         <asp:Button ID="back" runat="server" Text="בחזרה לעמוד הראשי" OnClick="back_Click" />
