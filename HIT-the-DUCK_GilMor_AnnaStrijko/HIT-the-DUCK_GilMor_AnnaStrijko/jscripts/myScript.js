@@ -42,3 +42,46 @@ $(document).ready(function () {
     }
 
 });
+
+//פעולה שמתרחשת בלחיצה על התמונה הראשונה ופותחת את חלון בחירת התמונה הראשונה
+function openFileUploader1() {
+    $('#FileUpload1').click();
+}
+
+
+$(document).ready(function () {
+    //לאחר שלחצנו על התמונה שרצינו לבחור - תמונה מספר אחד
+    $("#FileUpload1").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#itemIMG').attr('src', e.target.result);
+                $('#itemIMG').attr('src', e.target.result);
+                //document.getElementById("myP").style.visibility = "hidden";
+                ShowImg();
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+        //call C#
+        //var id = '<%= imgUpload2.ClientID%>;
+        //$('#' + id).click();
+    });
+});
+
+function ShowImg() {
+    $("#itemTB").css('display', 'none');
+    $("#itemIMG").css('display', 'initial');
+    $("#LabelCounter3").css('display', 'none');
+    $("#ItemAddButton").css('display', 'block');
+    $("#ItemAddButtonIMG").css('display', 'block');
+    $("#ItemAddButtonTXT").css('display', 'none');
+}
+
+function ShowText() {
+    $("#itemTB").css('display', 'initial');
+    $("#itemIMG").css('display', 'none');
+    $("#LabelCounter3").css('display', 'initial');
+    $("#ItemAddButtonIMG").css('display', 'none');
+    $("#ItemAddButtonTXT").css('display', 'block');
+}

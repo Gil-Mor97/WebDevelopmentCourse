@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HIT-the-Duck>
   <idCounter>3</idCounter>
-  <game id="1" gamecode="1001" name="מצא את היונקים" isPublished="True">
-    <idCounter>2</idCounter>
-    <question>לחצו רק על בעלי חיים השייכים למשפחת היונקים</question>
+  <game id="1" gamecode="1001" name="מצא את היונקים1" isPublished="True">
+    <idCounter>10</idCounter>
+    <question>זהה את כל בעלי החיים ממשפחת היונקים</question>
     <answer id="1" qType="img" isCorrect="false">butterfly.png</answer>
     <answer id="2" qType="img" isCorrect="true">lion.png</answer>
     <answer id="3" qType="img" isCorrect="true">dolphin.png</answer>

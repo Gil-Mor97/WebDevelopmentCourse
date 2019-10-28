@@ -1,5 +1,141 @@
 ﻿body {
     direction: rtl;
+    text-align: right;
+}
+
+h1 {
+    text-align: right;
+    margin: 2% 3%;
+}
+
+.container {
+    margin-top: 2%;
+}
+
+.countTooltip {
+    text-align: left;
+    float: left;
+    display: block;
+}
+
+#itemIMG {
+    width: 120px;
+    height: 97px;
+    margin: 113px 131px 13px 9px;
+    float: right;
+    border: 0;
+}
+
+#instructions {
+    width: 100%;
+    text-align: right;
+    margin-left: 165px;
+}
+
+
+#updating input {
+    margin-top: 16px;
+    margin-right: -32px;
+    margin-left: 32px;
+}
+
+#infospace {
+    margin-bottom: 5%;
+}
+
+    #infospace div {
+        display: inline;
+        margin: 0 3%;
+        text-align: right;
+    }
+
+#ansRBL {
+    text-align: center;
+    /* margin-top: -55px; */
+    float: right;
+}
+
+    #ansRBL td {
+        text-align: center;
+        padding-left: 46px;
+    }
+
+    #ansRBL label {
+        display: table;
+        width: 170px;
+        position: relative;
+    }
+
+.btn, container {
+    margin: 0 auto;
+}
+
+#ducky {
+    background-image: url(../images/ducky-edit.png);
+    background-size: 100%;
+    width: 381.29px;
+    height: 269px;
+    float: right;
+    background-repeat: no-repeat;
+}
+
+#myEdit {
+    width: 81%;
+}
+
+#itemTB {
+    margin-top: 41%;
+    margin-left: 43px;
+    width: 147px;
+    height: 90px;
+    text-align: center;
+    border: 0;
+}
+
+#LabelCounter3, itemUpdateButton {
+    margin-left: 15%;
+}
+
+#buttons {
+    width: 381.29px;
+    margin: 0 auto;
+    /* margin-top: 170px; */
+}
+
+#itemUpdateButton, #itemCancelButton, #ItemAddButtonIMG, #ItemAddButtonTXT {
+    display: block;
+    margin-top: 2%;
+    width: 40%;
+}
+
+.checks {
+    margin: 0 auto;
+    text-align: center;
+    /* margin-bottom: 1em; */
+}
+
+    .checks div {
+        padding: 1%;
+        display: block;
+        text-align: right;
+    }
+
+    .checks span {
+        text-align: right;
+    }
+
+    .checks .fas, .checks .fa {
+        padding: 0 1%;
+    }
+
+.datalistItem {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+#DataListCorrect, #DataListIncorrect {
+    margin: 0 25px;
 }
 
 /*הגדרות לחלון האפור*/
@@ -42,3 +178,17 @@
     width: 150px;
     height: 150px;
 }
+
+#ItemAddButtonIMG, #ItemAddButtonTXT {
+    display: none;
+}
+
+#uploading {
+    text-align: center;
+    width: 381.29px;
+}
+
+    #uploading input {
+        margin: 0 auto;
+        text-align: center;
+    }

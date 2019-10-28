@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +13,7 @@ public partial class _Default : System.Web.UI.Page
 {
     XmlDocument myDoc = new XmlDocument();
     string gameid;
+    string imagesLibPath = "uploadedFiles/";//הגדרת נתיב לשמירת הקובץ
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -23,14 +26,21 @@ public partial class _Default : System.Web.UI.Page
         XmlDataSource_Correct.XPath = "/HIT-the-Duck/game[@id='" + gameid + "']/answer[@isCorrect='true']";
         XmlDataSource_Incorrect.XPath = "/HIT-the-Duck/game[@id='" + gameid + "']/answer[@isCorrect='false']";
 
-        
+        gamename.Text = Server.HtmlDecode(myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']")[0].Attributes["name"].Value);
+        if (!string.IsNullOrEmpty(gamename.Text))
+        {
+            myH1.InnerHtml = "עריכת המשחק \"" + gamename.Text + "\"";
+        }
+
+        //הצגת הנחייה לזיהוי
+        instructions.Text = Server.HtmlDecode(myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/question").Item(0).InnerXml.ToString());
+
+
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        gamename.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']")[0].Attributes["name"].Value;
-        instructions.Text = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/question").Item(0).InnerXml.ToString();
-
+        
         LoadDLItems(DataListCorrect);
         LoadDLItems(DataListIncorrect);
     }
@@ -70,89 +80,77 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    protected void CheckFields()
+    {
+        
+    }
+
     protected void ItemSelect(object sender, EventArgs e)
     {
-        {
-            myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
-            string gameid = Session["theItemIdSession"].ToString();
+        //חסימת שימוש בכפתורים
+        imgUpload.Enabled = false;
+        txtUpload.Enabled = false;
 
-            XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
-            if (((RadioButtonList)FindControl("ansRBL")).SelectedItem.Text == "נכון") //בדיקה האם נבחר "נכון" או "לא נכון" בעריכת הפריט
-            {
-                BTE.Attributes["isCorrect"].Value = "true";
-            }
-            else
-            {
-                BTE.Attributes["isCorrect"].Value = "false";
-            }
-            BTE.InnerXml = ((TextBox)FindControl("itemTB")).Text; //עדכון תוכן הפריט
-            RadioButtonList1.SelectedItem.Text = ((TextBox)FindControl("itemTB")).Text;
-
-            myDoc.Save(Server.MapPath("/XMLFiles/games.xml"));
-        }
-    }
-
-    protected void back_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("/Default.aspx");
-    }
-
-    //טעינת רשימת הפריטים לאחר החלפת קוד משחק
-    protected void RblLoad(object sender, EventArgs e)
-    {
-        XmlDocument myDoc = new XmlDocument();
+        string myID = ((LinkButton)((DataList)sender).SelectedItem.FindControl("lnkSelect")).Attributes["theItemId"];
         myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
-        string gameid = Session["theItemIdSession"].ToString();
+        //string gameid = "1";/* Session["theItemIdSession"].ToString();*/
 
-        RadioButtonList1.Items.Clear(); //הסרת הפריטים הנוכחיים מהרשימה
 
-        XmlNodeList a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']//answer");
-        int indx = 1;
-        foreach (XmlNode b in a)
-        {
-            ListItem listItem = new ListItem();
-            listItem.Text = b.InnerXml.ToString();
-            listItem.Value = b.Attributes["id"].Value;
-            RadioButtonList1.Items.Add(listItem);
-            indx++;
-        }
-        RadioButtonList1.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
-        RadioButtonList1.DataBind();
 
-        RblChange(sender, e); //קריאה לפעולה לטעינת הפריט הנבחר לאחר החלפת המשחק
-    }
+        XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@id='" + myID + "']").Item(0);
 
-    //פעולה שמטפלת בשינוי בחירת פריט ברשימה
-    protected void RblChange(object sender, EventArgs e)
-    {
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
-        string gameid = Session["theItemIdSession"].ToString();
-
-        TextBox textBox1 = (TextBox)FindControl("itemTB");
-        textBox1.Text = RadioButtonList1.SelectedItem.Text;
-        RadioButtonList ansRBL = (RadioButtonList)FindControl("ansRBL");
-
-        XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id=" + gameid + "]/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
         if (BTE.Attributes["isCorrect"].Value == "true")
         {
             ansRBL.SelectedIndex = 0;
+            DataListIncorrect.SelectedIndex = -1;
         }
         else
         {
             ansRBL.SelectedIndex = 1;
+            DataListCorrect.SelectedIndex = -1;
         }
+
+        if (BTE.Attributes["qType"].Value == "img")
+        {
+            itemIMG.ImageUrl = "~/uploadedFiles/" + Server.UrlDecode(BTE.InnerXml);
+            itemTB.Visible = false;
+            itemIMG.Visible = true;
+            LabelCounter3.Visible = false;
+        }
+        else
+        {
+            itemTB.Text = BTE.InnerXml;
+            itemIMG.Visible = false;
+            itemTB.Visible = true;
+            LabelCounter3.Visible = true;
+        }
+
+        //myDoc.Save(Server.MapPath("/XMLFiles/games.xml"));
+        itemUpdateButton.Visible = true;
+
+        itemCancelButton.Visible = true;
     }
 
-    //פעולה שמעכדנת את עץ הXML 
-    protected void ItemEdit(object sender, EventArgs e)
+    protected void itemUpdateButton_Click(object sender, EventArgs e)
     {
-        XmlDocument myDoc = new XmlDocument();
-        myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
-        string gameid = Session["theItemIdSession"].ToString();
+        string myID;
+        if (DataListCorrect.SelectedItem != null)
+        {
+            myID = ((LinkButton)DataListCorrect.SelectedItem.FindControl("lnkSelect")).Attributes["theItemId"];
+        }
+        else
+        {
+            myID = ((LinkButton)DataListIncorrect.SelectedItem.FindControl("lnkSelect")).Attributes["theItemId"];
+        }
 
-        XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
-        if (((RadioButtonList)FindControl("ansRBL")).SelectedItem.Text == "נכון") //בדיקה האם נבחר "נכון" או "לא נכון" בעריכת הפריט
+        DataListCorrect.SelectedIndex = -1;
+        DataListIncorrect.SelectedIndex = -1;
+
+        myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
+        string gameid = "1"; /*Session["theItemIdSession"].ToString();*/
+
+        XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@id='" + myID + "']").Item(0);
+        if (ansRBL.SelectedItem.Text == "נכון") //בדיקה האם נבחר "נכון" או "לא נכון" בעריכת הפריט
         {
             BTE.Attributes["isCorrect"].Value = "true";
         }
@@ -160,108 +158,176 @@ public partial class _Default : System.Web.UI.Page
         {
             BTE.Attributes["isCorrect"].Value = "false";
         }
-        BTE.InnerXml = ((TextBox)FindControl("itemTB")).Text; //עדכון תוכן הפריט
-        RadioButtonList1.SelectedItem.Text = ((TextBox)FindControl("itemTB")).Text;
-
+        if (!string.IsNullOrEmpty(itemTB.Text))
+        {
+            BTE.InnerXml = Server.HtmlEncode(itemTB.Text); //עדכון תוכן הפריט
+        }
         myDoc.Save(Server.MapPath("/XMLFiles/games.xml"));
-        RblChange(sender, e); //קריאה לפעולה לטעינת הפריט מחדש לאחר העדכון
+
+        myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
+        DataListCorrect.DataBind();
+        DataListIncorrect.DataBind();
+        LoadDLItems(DataListCorrect);
+        LoadDLItems(DataListIncorrect);
+
+        itemIMG.Visible = true;
+        itemIMG.ImageUrl = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+        itemTB.Visible = false;
+        LabelCounter3.Visible = false;
+
+        itemTB.Text = "";
+        itemUpdateButton.Visible = false;
+
+        imgUpload.Enabled = true;
+        txtUpload.Enabled = true;
     }
 
+    protected void back_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/GameView.aspx");
+    }
+    protected void txtUpload_Click(object sender, ImageClickEventArgs e)
+    {
+        //itemIMG.Visible = false;
+        itemTB.Visible = true;
+        LabelCounter3.Visible = true;
+        //ItemAddButton.Visible = true;
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowText()", true);
+
+    }
+
+    protected void imgUpload_Click(object sender, ImageClickEventArgs e)
+    {
+        //itemIMG.Visible = true;
+        //itemTB.Visible = false;
+        //LabelCounter3.Visible = false;
+        //ItemAddButton.Visible = true;
+        
+        Page.ClientScript.RegisterStartupScript(this.GetType(),"CallMyFunction", "ShowText()", true);
+
+    }
+
+    
+
+    protected void UpadeInfo_Click(object sender, EventArgs e)
+    {
+        XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']")[0];
+        BTE.Attributes["name"].Value = Server.HtmlEncode(gamename.Text);
+        myDoc.Save(Server.MapPath("/XMLFiles/games.xml"));
+        myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
+
+        BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/question").Item(0);
+        BTE.InnerText = Server.HtmlEncode(instructions.Text);
+        myDoc.Save(Server.MapPath("/XMLFiles/games.xml"));
+        myDoc.Load(Server.MapPath("/XMLFiles/games.xml"));
+    }
+
+    protected void itemCancelButton_Click(object sender, EventArgs e)
+    {
+        itemIMG.Visible = true;
+        itemIMG.ImageUrl = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+        itemTB.Visible = false;
+        LabelCounter3.Visible = false;
+        itemCancelButton.Visible = false;
+
+    }
+
+    protected void ItemAddButton_Click(object sender, EventArgs e)
+    {
+        Button btn1 = ((Button)sender);
+        if (btn1.ID == "ItemAddButtonIMG")
+        {
+            SaveImg(); //שמירת התמונה
+        }
+        else if(btn1.ID == "ItemAddButtonTXT")
+        {
+
+        }
+    }
+
+    protected void SaveImg()
+    {
+        string filetype = FileUpload1.PostedFile.ContentType;//איתור סוג הקובץ 
+
+        //בדיקה האם הקובץ הנקלט הוא מסוג תמונה
+        if (filetype.Contains("image"))
+        {
+            //איתור שם הקובץ
+            string fileName = FileUpload1.PostedFile.FileName;
+            //איתור סיומת הקובץ
+            string endOfFileName = fileName.Substring(fileName.LastIndexOf("."));
+            //איתור זמן העלת הקובץ
+            string myTime = DateTime.Now.ToString("dd_MM_yy_HH_mm_ss");
+            //הגדרת שם חדש לקובץ
+            string imageNewName = myTime + endOfFileName;
+
+
+            // Bitmap המרת הקובץ שיתקבל למשתנה מסוג
+            System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(FileUpload1.PostedFile.InputStream);
+
+            //קריאה לפונקציה המקטינה את התמונה
+            //אנו שולחים לה את התמונה שלנו בגירסאת הביטמאפ ואת האורך והרוחב שאנו רוצים לתמונה החדשה
+            System.Drawing.Image objImage = FixedSize(bmpPostedImage, 300, 300);
 
 
 
+            //שמירת הקובץ בגודלו החדש בתיקייה
+            objImage.Save(Server.MapPath(imagesLibPath) + imageNewName);
+        }
+        else
+        {
+            Response.Write("<script LANGUAGE='JavaScript' >alert('הקובץ אינו תמונה ולכן לא ניתן להעלות אותו')</script>");
+        }
+    }
+
+    static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
+    {
+        int sourceWidth = Convert.ToInt32(imgPhoto.Width);
+        int sourceHeight = Convert.ToInt32(imgPhoto.Height);
+
+        int sourceX = 0;
+        int sourceY = 0;
+        int destX = 0;
+        int destY = 0;
+
+        float nPercent = 0;
+        float nPercentW = 0;
+        float nPercentH = 0;
+
+        nPercentW = ((float)Width / (float)sourceWidth);
+        nPercentH = ((float)Height / (float)sourceHeight);
+        if (nPercentH < nPercentW)
+        {
+            nPercent = nPercentH;
+            destX = System.Convert.ToInt16((Width -
+                          (sourceWidth * nPercent)) / 2);
+        }
+        else
+        {
+            nPercent = nPercentW;
+            destY = System.Convert.ToInt16((Height -
+                          (sourceHeight * nPercent)) / 2);
+        }
+
+        int destWidth = (int)(sourceWidth * nPercent);
+        int destHeight = (int)(sourceHeight * nPercent);
+
+        System.Drawing.Bitmap bmPhoto = new System.Drawing.Bitmap(Width, Height,
+                          PixelFormat.Format24bppRgb);
+        bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+                         imgPhoto.VerticalResolution);
+
+        System.Drawing.Graphics grPhoto = System.Drawing.Graphics.FromImage(bmPhoto);
+        grPhoto.Clear(System.Drawing.Color.White);
+        grPhoto.InterpolationMode =
+                InterpolationMode.HighQualityBicubic;
+
+        grPhoto.DrawImage(imgPhoto,
+            new System.Drawing.Rectangle(destX, destY, destWidth, destHeight),
+            new System.Drawing.Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+            System.Drawing.GraphicsUnit.Pixel);
+
+        grPhoto.Dispose();
+        return bmPhoto;
+    }
 }
-
-//INIT
-
-//        //טעינת הפריטים לרשימה
-//        XmlNodeList a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']//answer");
-//        int indx = 1;
-//        foreach (XmlNode b in a)
-//        {
-//            ListItem listItem = new ListItem();
-//listItem.Text = b.InnerXml.ToString();
-//            //listItem.Value = (gamecode - 100) * 100 + indx + "";
-//            listItem.Value = b.Attributes["id"].Value;
-//            RadioButtonList1.Items.Add(listItem);
-//            indx++;
-//        }
-//        RadioButtonList1.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
-//        RadioButtonList1.DataBind();
-//        //יצירת פקדים דינאמיים להצגת ועדכון הפריט
-//        if (RadioButtonList1.Items.Count > 0) //בדיקה שמונעת נסיון טעינה של מסיחים ריקים
-//        {
-//            TextBox textBox1 = new TextBox();
-//textBox1.Text = RadioButtonList1.SelectedItem.Text;
-//            textBox1.ID = "itemTB";
-//            Panel1.Controls.Add(textBox1);
-
-//            RadioButtonList ansRBL = new RadioButtonList();
-//ansRBL.ID = "ansRBL";
-
-//            ListItem listItem1 = new ListItem();
-//listItem1.Text = "נכון";
-//            listItem1.Value = "0";
-//            ansRBL.Items.Add(listItem1);
-
-//            listItem1 = new ListItem();
-//listItem1.Text = "לא נכון";
-//            listItem1.Value = "1";
-//            ansRBL.Items.Add(listItem1);
-
-//            XmlNode BTE = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@id='" + RadioButtonList1.SelectedItem.Value + "']").Item(0);
-//            if (BTE.Attributes["isCorrect"].Value == "true") //עדכון המאפיין של הפריט בהתאם לערכו בעץ
-//            {
-//                ansRBL.SelectedIndex = 0;
-//            }
-//            else
-//            {
-//                ansRBL.SelectedIndex = 1;
-//            }
-//            Panel1.Controls.Add(ansRBL);
-
-//            Button editBut = new Button();
-//editBut.Click += new EventHandler(ItemEdit);
-//editBut.ID = "editBut";
-//            editBut.Text = "עדכון פריט";
-//            Panel1.Controls.Add(editBut);
-
-//            Panel1.DataBind();
-//        }
-//        else
-//        {
-//            Label label = new Label();
-//label.Text = "לא קיימים מסיחים במשחק זה";
-//            label.ID = "label1";
-//            Panel1.Controls.Add(label);
-//        }
-
-//        a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@isCorrect='true']");
-//        indx = 1;
-//        foreach (XmlNode b in a)
-//        {
-//            ListItem listItem = new ListItem();
-//listItem.Text = b.InnerXml.ToString();
-//            //listItem.Value = (gamecode - 100) * 100 + indx + "";
-//            listItem.Value = b.Attributes["id"].Value;
-//            CorrectRBL.Items.Add(listItem);
-//            indx++;
-//        }
-//        CorrectRBL.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
-//        CorrectRBL.DataBind();
-
-//        a = myDoc.SelectNodes("/HIT-the-Duck/game[@id='" + gameid + "']/answer[@isCorrect='false']");
-//        indx = 1;
-//        foreach (XmlNode b in a)
-//        {
-//            ListItem listItem = new ListItem();
-//listItem.Text = b.InnerXml.ToString();
-//            //listItem.Value = (gamecode - 100) * 100 + indx + "";
-//            listItem.Value = b.Attributes["id"].Value;
-//            IncorrectRBL.Items.Add(listItem);
-//            indx++;
-//        }
-//        IncorrectRBL.SelectedIndex = 0; //אתחול ערך ברירת מחדל לרשימה
-//        IncorrectRBL.DataBind();
-
-//        RadioButtonList1.Visible = false;
