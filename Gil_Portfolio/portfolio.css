@@ -1,7 +1,7 @@
 body{
 	font-family: 'PT Sans Narrow', sans-serif;
 	background-color: #cce4ffc4;
-	padding-top: 1em;
+	padding-top: 2em;
 }
 
 
@@ -34,12 +34,46 @@ h3 {
 }
 
 p {
-/*	font-family: Raleway;
-*/	margin-left: 1.66%;
+/*	font-family: Raleway;*/
+	margin-left: 1.66%;
 	margin-top: -2%;
 	margin-bottom: -1%;
-	font-size: 90%;
+	font-size: 95%;
 	font-weight: 500;
 	text-transform: uppercase;
 	padding: 0.3em 0;
+}
+
+.customP{
+	margin-top: -2%;
+	margin-bottom: 2%;
+	text-transform: none;
+	font-size: 95%;
+}
+
+.job{
+	width: 67%;
+}
+
+.grey{
+	color: gray;
+}
+
+.sidebar{
+	background-color: #293e49;
+	color: white;
+	width: 100px;
+	height: 100%; /* Full-height: remove this if you want "auto" height */
+	width: 33%; /* Set the width of the sidebar */
+	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	right: 0;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 2em;
+	padding-left: 10px;
+}
+
+.sidebar ul{
+	list-style-type: none;
 }
