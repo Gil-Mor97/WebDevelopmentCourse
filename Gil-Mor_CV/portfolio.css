@@ -1,0 +1,132 @@
+@page {
+    size: A4;
+}
+
+@page :left {
+    margin-left: 3cm;
+}
+
+@page :right {
+    margin-left: 4cm;
+}
+
+body {
+    font-family: 'PT Sans Narrow', sans-serif;
+    background-color: #cce4ffc4;
+    padding-top: 3em;
+    width: 21cm;
+    height: 29.7cm;
+}
+
+@media print {
+    body {
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0mm 45mm 30mm 4.5mm;
+        /* change the margins as you want them to be. */
+    }
+}
+
+h1 {
+    font-size: 225%;
+    margin-top: -3px;
+    font-weight: 800;
+}
+
+h2 {
+    /*	font-family: Raleway;
+  margin-left: 1.66%; */
+    margin-top: 5%;
+    font-size: 125%;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: 2px solid #f1f1f1;
+    width: 29%;
+    padding: 0.3em 0;
+}
+
+h5 {
+    font-weight: 600;
+}
+
+.sidebar h2 {
+    width: 60%;
+}
+
+h3 {
+    /*	font-family: Raleway;
+  */
+    margin-left: 1.66%;
+    /*	margin-top: 7%;
+  */
+    font-size: 105%;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.3em 0;
+    padding-bottom: 0;
+}
+
+.sum {
+    width: 660px;
+    text-align: justify;
+    padding: 2% 5%;
+    padding-bottom: 0;
+}
+
+.job p {
+    /*	font-family: Raleway;*/
+    margin-left: 1.66%;
+    margin-top: -2%;
+    margin-bottom: -1%;
+    font-size: 100%;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.3em 0;
+}
+
+.customP {
+    margin-top: -2%;
+    margin-bottom: 2%;
+    text-transform: none !important;
+    font-size: 100%;
+}
+
+.job {
+    width: 72%;
+    margin-left: 4%;
+}
+
+.width90 {
+    width: 90%;
+    margin-bottom: 9px;
+}
+
+.grey {
+    color: gray;
+}
+
+.sidebar {
+    background-color: #293e49;
+    color: white;
+    width: 100px;
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    width: 28%;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    right: 0;
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 3.5em;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}

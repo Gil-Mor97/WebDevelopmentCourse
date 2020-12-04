@@ -1,0 +1,88 @@
+body{
+	font-family: 'Rubik', sans-serif;
+	background-color: #cce4ffc4;
+	padding-top: 2em;
+	direction: rtl;
+	margin: 2%;
+}
+
+
+h1 {
+	font-size: 200%;
+	margin-top: -3px;
+	font-weight: 800;
+}
+
+h2 {
+/*	font-family: Raleway;
+margin-left: 1.66%; */
+	margin-top: 1%;
+	font-size: 100%;
+	font-weight: 800;
+	text-transform: uppercase;
+	border-bottom: 2px solid #f1f1f1;
+	width: 25%;
+	padding: 0.3em 0;
+}
+
+
+h3 {
+/*	font-family: Raleway;
+*/	margin-left: 1.66%;
+/*	margin-top: 7%;
+*/	font-size: 90%;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 0.3em 0;
+}
+
+p {
+/*	font-family: Raleway;*/
+	margin-left: 1.66%;
+	margin-top: -2%;
+	margin-bottom: -1%;
+	font-size: 95%;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 0.3em 0;
+}
+
+.customP{
+	margin-top: -2%;
+	margin-bottom: 2%;
+	text-transform: none;
+	font-size: 95%;
+}
+
+.job{
+	width: 67%;
+}
+
+.grey{
+	color: gray;
+}
+
+.width90 {
+    width: 90%;
+    margin-bottom: 9px;
+}
+
+.sidebar{
+	background-color: #293e49;
+	color: white;
+	width: 100px;
+	height: 100%; /* Full-height: remove this if you want "auto" height */
+	width: 33%; /* Set the width of the sidebar */
+	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	left: 0;
+	padding: 2%;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 2em;
+	padding-right: 10px;
+}
+
+.sidebar ul{
+	list-style-type: none;
+}
