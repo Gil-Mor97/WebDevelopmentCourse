@@ -41,7 +41,7 @@ h2 {
     font-weight: 800;
     text-transform: uppercase;
     border-bottom: 2px solid #f1f1f1;
-    width: 29%;
+    width: 33%;
     padding: 0.3em 0;
 }
 
@@ -98,6 +98,7 @@ h3 {
 
 .width90 {
     width: 90%;
+    height: 10px;
     margin-bottom: 9px;
 }
 
